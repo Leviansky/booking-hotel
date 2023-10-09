@@ -1,5 +1,9 @@
 const CustomerController = require("./CustomerController");
+const HotelController = require('./HotelController')
+const UserController = require('./UserController')
 
 module.exports = {
-    CustomerController
+    CustomerController,
+    HotelController,
+    UserController
 }

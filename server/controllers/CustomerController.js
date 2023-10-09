@@ -1,10 +1,10 @@
 const { Customer } = require("../models");
-const {EncryptPwd,DecryptPwd} = require('../helpers/bycrypt');
-const {encodeToken,decodeToken} = require('../helpers/jwt');
+const { EncryptPwd, DecryptPwd } = require('../helpers/bycrypt');
+const { encodeToken, decodeToken } = require('../helpers/jwt');
 
 
 class CustomerController {
-    static async getAllCustomer (req,res) {
+    static async getAllCustomer(req, res) {
         try {
             let result = await Customer.findAll();
             res.status(200).json(result);
@@ -13,17 +13,17 @@ class CustomerController {
         }
     }
 
-    static async register (req,res) {
+    static async register(req, res) {
         try {
-            const {username, email, password} = req.body;
+            const { username, email, password } = req.body;
             let founded = await Customer.findOne({
-                where: {email}
+                where: { email }
             })
-            if(!founded) {
+            if (!founded) {
                 founded = await Customer.findOne({
-                    where: {username}
+                    where: { username }
                 })
-                if(!founded) {
+                if (!founded) {
                     let encryptedPwd = EncryptPwd(password);
                     let result = await Customer.create({
                         username, email, password: encryptedPwd
@@ -44,29 +44,29 @@ class CustomerController {
         }
     }
 
-    static async login (req,res){
+    static async login(req, res) {
         try {
-            const {username, password} = req.body;
+            const { username, password } = req.body;
 
             let founded = await Customer.findOne({
                 where: {
-                    email:username
+                    email: username
                 }
             })
 
-            if(founded === null) {
+            if (founded === null) {
                 founded = await Customer.findOne({
                     where: {
-                        username:username
+                        username: username
                     }
                 })
             }
-            
-            if(founded) {
-                if(DecryptPwd(password,founded.password)) {
+
+            if (founded) {
+                if (DecryptPwd(password, founded.password)) {
                     let access_token = encodeToken(founded);
                     localStorage.setItem(access_token);
-                    res.status(200).json({access_token});
+                    res.status(200).json({ access_token });
                 } else {
                     res.status(401).json({
                         message: 'Wrong Password'
