@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const secretCode = "HOTELSKUY";
 
 const encodeToken = (customer) => {
-    const { id, username, email, name, address, phone } = customer;
+    const { id, username, email, name, address, phone, role } = customer;
     let token = jwt.sign(
       {
         id,
@@ -10,7 +10,8 @@ const encodeToken = (customer) => {
         email,
         name,
         address,
-        phone
+        phone,
+        role
       },
       secretCode
     );

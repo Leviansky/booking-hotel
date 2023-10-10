@@ -7,15 +7,13 @@ route.get("/api", (req, res) => {
 });
 
 const customerRoute = require("./customer");
-// const hotelRoutes = require("./hotel");
+const hotelRoutes = require("./hotel");
 // const roomRoutes = require("./room");
-const bookingRoutes = require("./booking")
-const userRoutes = require('./user')
+const bookingRoute = require("./booking")
 
 route.use("/api/customers", customerRoute);
-// route.use("/api/hotels", hotelRoutes);
+route.use("/api/hotels", hotelRoutes);
 // route.use("/api/rooms", roomRoutes);
-route.use("/api/books", bookingRoutes)
-route.use('/api/users', userRoutes)
+route.use("/api", bookingRoute)
 
 module.exports = route;

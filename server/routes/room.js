@@ -2,6 +2,6 @@ const { Router } = require('express')
 const roomRoute = Router()
 
 
-roomRoute.get('/',)
+roomRoute.get('/')
 
 module.exports = roomRoute

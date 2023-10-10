@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Customer.hasMany(models.Booking)
+      Customer.hasMany(models.Booking);
     }
   }
   Customer.init({
@@ -20,13 +20,15 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     name: DataTypes.STRING,
     address: DataTypes.STRING,
-    phone: DataTypes.INTEGER
+    phone: DataTypes.INTEGER,
+    role: DataTypes.STRING
   }, {
     hooks: {
-      beforeCreate: function(customer, option) {
+      beforeCreate: function (customer, options) {
         customer.name = customer.name || customer.username;
         customer.address = customer.address || '';
         customer.phone = customer.phone || 0;
+        customer.role = 'user';
       }
     },
     sequelize,

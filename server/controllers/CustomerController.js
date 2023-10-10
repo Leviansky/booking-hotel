@@ -62,22 +62,18 @@ class CustomerController {
                 })
             }
 
-            if (founded) {
-                if (DecryptPwd(password, founded.password)) {
-                    let access_token = encodeToken(founded);
-                    localStorage.setItem(access_token);
-                    res.status(200).json({ access_token });
-                } else {
-                    res.status(401).json({
-                        message: 'Wrong Password'
-                    })
-                }
-            } else {
-                res.status(404).json({
-                    message: 'Username/Email Not Found'
-                })
-            }
+            if (!founded) return res.status(404).json({
+                message: 'Username/Email Not Found'
+            })
 
+            let match = DecryptPwd(password, founded.password)
+            if(!match) return res.status(401).json({
+                message: 'Wrong Password'
+            })
+
+            let access_token = encodeToken(founded);
+            // localStorage.setItem({access_token});
+            res.status(200).json({ access_token });
         } catch (error) {
             res.status(500).json(error)
         }

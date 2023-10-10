@@ -23,6 +23,11 @@ module.exports = (sequelize, DataTypes) => {
     CustomerId: DataTypes.INTEGER,
     HotelId: DataTypes.INTEGER
   }, {
+    hooks: {
+      beforeCreate: function(booking, options) {
+        booking.status = 'unpaid'
+      }
+    },
     sequelize,
     modelName: 'Booking',
   });
