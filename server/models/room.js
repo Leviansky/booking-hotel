@@ -11,14 +11,19 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Room.belongsTo(models.Hotel)
     }
   }
   Room.init({
+    roomNumbers: DataTypes.INTEGER,
     price: DataTypes.INTEGER,
     status: DataTypes.STRING,
     HotelId: DataTypes.INTEGER
   }, {
+    hooks: {
+      beforeCreate: function(room, options) {
+        room.status = 'available';
+      }
+    },
     sequelize,
     modelName: 'Room',
   });

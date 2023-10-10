@@ -34,9 +34,8 @@ class BookingController {
         try {
             const CustomerId = decodeToken(req.headers.access_token).id;
             let customerBooking = await Booking.findAll({
+                where: {CustomerId},
                 include: [Customer, Hotel]
-            }, {
-                where: { CustomerId }
             })
 
             if (customerBooking.length === 0) return res.status(200).json({ message: 'you doesnt have room booked yet' })

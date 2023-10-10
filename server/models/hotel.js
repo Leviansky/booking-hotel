@@ -1,3 +1,4 @@
+const { Room } = require('../models');
 'use strict';
 const {
   Model
@@ -16,9 +17,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Hotel.init({
+    name: DataTypes.STRING,
     address: DataTypes.STRING,
     total_room: DataTypes.INTEGER
   }, {
+    hooks: {
+      beforeCreate: function(hotel, options) {
+        hotel.total_room = 0;
+      }
+    },
     sequelize,
     modelName: 'Hotel',
   });

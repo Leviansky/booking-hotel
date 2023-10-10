@@ -1,11 +1,11 @@
-const { hotel, room } = require('../models')
+const { Hotel, Room } = require('../models')
 
 
 class HotelController {
     static async listHotel(req, res) {
         try {
-            let hotels = await room.findAll({
-                include: [hotel]
+            let hotels = await Hotel.findAll({
+                include: [Room]
             })
 
             res.status(200).json(hotels)
@@ -15,17 +15,14 @@ class HotelController {
     }
 
     static async addHotel(req, res) {
-        const { address, total_room } = req.body
+        const { name, address, total_room } = req.body
         try {
-            let created = await hotel.create({
-                address, total_room
+            let created = await Hotel.create({
+                name, address, total_room
             })
-
-            res.status(201).json({ message: 'hotel successfully added' })
+            res.status(201).json({ message: 'Hotel successfully added' })
         } catch (err) {
-            EmptyResultError.status(500).json({
-                message: err.message
-            })
+            res.status(500).json({message: err.message})
         }
 
     }
@@ -35,17 +32,17 @@ class HotelController {
             const { address, total_room } = req.body
             const id = +req.params.id
 
-            const found = await hotel.findByPk(id)
-            if (!found) return res.status(404).json({ message: 'hotel not found' })
+            const found = await Hotel.findByPk(id)
+            if (!found) return res.status(404).json({ message: 'Hotel not found' })
 
-            let edited = await hotel.update({
+            let edited = await Hotel.update({
                 address, total_room
             }, {
                 where: { id }
             })
 
             edited === 1 ?
-                res.status(200).json({ message: 'hotel successfully updated' }) :
+                res.status(200).json({ message: 'Hotel successfully updated' }) :
                 res.sendStatus(400)
 
         } catch (err) {
@@ -58,10 +55,10 @@ class HotelController {
 
             const id = +req.params.id
 
-            const found = await hotel.findByPk(id)
-            if (!found) return res.status(404).json({ message: 'hotel not found' })
+            const found = await Hotel.findByPk(id)
+            if (!found) return res.status(404).json({ message: 'Hotel not found' })
 
-            const result = await hotel.destroy({ where: { id } })
+            const result = await Hotel.destroy({ where: { id } })
 
             result === 1 ?
                 res.status(200).json({ message: 'hotel successfully removed' }) :
