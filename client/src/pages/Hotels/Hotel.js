@@ -1,11 +1,12 @@
 import React from "react";
-import { Navbar } from "../../components";
+import { Navbar, Footer } from "../../components";
 
 const Hotel = () => {
   return (
     <div>
       <Navbar />
       Hotel
+      <Footer />
     </div>
   );
 };
