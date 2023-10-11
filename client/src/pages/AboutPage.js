@@ -10,8 +10,13 @@ const AboutPage = () => {
         <h2>About Us</h2>
       </div>
       <div className="about">
-        <div className="container about-img">
-          <img src={About1}></img>
+        <div className="row">
+          <div className="row">
+            <p>Lorem ipsum</p>
+          </div>
+          <div className="row">
+            <img src={About1}></img>
+          </div>
         </div>
       </div>
       <Footer />
