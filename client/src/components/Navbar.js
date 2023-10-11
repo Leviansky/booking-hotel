@@ -21,9 +21,6 @@ const Navbar = () => {
               <li class="nav-item">
                 <Link class="nav-link" to="/hotels">Hotels</Link>
               </li>
-              <li class="nav-item">
-                <Link class="nav-link" to="/rooms">Rooms</Link>
-              </li>
               <Link class="btn btn-outline-success" to="/login">Login</Link>
             </ul>
           </div>

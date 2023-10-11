@@ -62,7 +62,7 @@ body {
   transform: translate(-50%, -50%);
 }
 .slider-text h5 {
-  font-family: 'Dancing Script', sans-serif;
+  font-family: "Dancing Script", sans-serif;
   font-size: 1.5rem;
   text-align: center;
 }
@@ -71,16 +71,54 @@ body {
   text-align: center;
 }
 
+/* login page */
+.login {
+  height: 50%;
+}
+.bg-image-vertical {
+position: relative;
+overflow: hidden;
+background-repeat: no-repeat;
+background-position: right center;
+background-size: auto 100%;
+}
+
+@media (min-width: 1025px) {
+.h-custom-2 {
+height: 100%;
+}
+}
+
 /* about */
-.about {
-  background-color: red;
-  width: 100%;
-  height: 50vh;
-  position: 'fixed';
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: flex-end;
+#about-info .info-right {
+  color: black;
+  float: right;
+  width: 50%;
+  min-height: 100%;
+}
+#about-info .info-left {
+  color: black;
+  float: left;
+  width: 50%;
+}
+#about-info .info-right img {
+  display: block;
+  margin: auto;
+  width: 70%;
+}
+#testimonial {
+  color: black;
+}
+
+/* card */
+.card-img {
+  height: 20vh;
+}
+.card-text {
+  color: black;
+}
+.btn-card {
+  width: 100px;
 }
 
 /* footer style */
