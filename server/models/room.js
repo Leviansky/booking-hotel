@@ -11,17 +11,19 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Room.hasOne(models.Booking)
     }
   }
   Room.init({
     roomNumbers: DataTypes.INTEGER,
     price: DataTypes.INTEGER,
     status: DataTypes.STRING,
-    HotelId: DataTypes.INTEGER
+    HotelId: DataTypes.INTEGER,
+    BookingId: DataTypes.INTEGER
   }, {
     hooks: {
-      beforeCreate: function(room, options) {
-        room.status = 'available';
+      beforeCreate: function(room,options) {
+        room.status = 'available'
       }
     },
     sequelize,

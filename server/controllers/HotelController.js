@@ -15,10 +15,10 @@ class HotelController {
     }
 
     static async addHotel(req, res) {
-        const { name, address, total_room } = req.body
+        const { name, address } = req.body
         try {
             let created = await Hotel.create({
-                name, address, total_room
+                name, address
             })
             res.status(201).json({ message: 'Hotel successfully added' })
         } catch (err) {
@@ -29,19 +29,19 @@ class HotelController {
 
     static async editHotel(req, res) {
         try {
-            const { address, total_room } = req.body
+            const { name, address } = req.body
             const id = +req.params.id
 
             const found = await Hotel.findByPk(id)
             if (!found) return res.status(404).json({ message: 'Hotel not found' })
 
             let edited = await Hotel.update({
-                address, total_room
+                name, address
             }, {
                 where: { id }
             })
 
-            edited === 1 ?
+            edited[0] === 1 ?
                 res.status(200).json({ message: 'Hotel successfully updated' }) :
                 res.sendStatus(400)
 
@@ -50,7 +50,7 @@ class HotelController {
         }
     }
 
-    static async removeHotel(req, res) {
+    static async deleteHotel(req, res) {
         try {
 
             const id = +req.params.id
@@ -65,6 +65,30 @@ class HotelController {
                 res.sendStatus(400)
         } catch (err) {
             res.status(500).json({ message: err.mess })
+        }
+    }
+
+    static async listHotelAvailable(req, res) {
+        try {
+            let hotels = await Hotel.findAll({
+                include: [Room]
+            })
+            let result = []
+            hotels.map(hotel => {
+                let Room = []
+                hotel.Rooms.forEach(room => {
+                    if(room.dataValues.status === 'available') {
+                        Room.push(room)
+                    }
+                })
+                hotel.dataValues.Rooms = Room;
+                result.push(hotel.dataValues)
+                return hotel
+            })
+
+            res.status(200).json(result)
+        } catch (err) {
+            res.status(500).json({ message: err.message })
         }
     }
 }

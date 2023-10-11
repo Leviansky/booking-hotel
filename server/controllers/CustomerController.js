@@ -9,7 +9,21 @@ class CustomerController {
             let result = await Customer.findAll();
             res.status(200).json(result);
         } catch (error) {
-            res.status(500).json(error);
+            res.status(500).json(error.message);
+        }
+    }
+
+    static async deleteUser(req,res) {
+        try {
+            const id = +req.params.UserId;
+            let result = await Customer.destroy({
+                where: {id}
+            })
+            result === 1
+            ? res.status(200).json({message: "Delete Success"})
+            : res.status(404).json({message: "User not found"})
+        } catch (error) {
+            res.status(500).json(error.message);
         }
     }
 
@@ -40,7 +54,7 @@ class CustomerController {
                 })
             }
         } catch (error) {
-            res.status(500).json(error)
+            res.status(500).json(error.message)
         }
     }
 
@@ -72,10 +86,26 @@ class CustomerController {
             })
 
             let access_token = encodeToken(founded);
-            // localStorage.setItem({access_token});
             res.status(200).json({ access_token });
         } catch (error) {
-            res.status(500).json(error)
+            res.status(500).json(error.message)
+        }
+    }
+
+    static async edit(req,res) {
+        try {
+            let user = decodeToken(req.headers.access_token);
+            const {id, username, password, email, role} = user;
+            const {name, address, phone} = req.body;
+
+            let result = await Customer.update({
+                id, username, password, email, name, address, phone, role
+            }, {
+                where: {id}
+            })
+            res.status(200).json(result);
+        } catch (error) {
+            res.status(500).json(error.message)
         }
     }
 }

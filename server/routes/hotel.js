@@ -1,14 +1,17 @@
 const { Router } = require('express')
 const hotelRoute = Router()
 const { HotelController, RoomController } = require('../controllers')
-const { authAdmin } = require('../middleware/authentication')
+const { authAdmin, authUser } = require('../middleware/authentication')
 
-hotelRoute.get('/', authAdmin, HotelController.listHotel)
-hotelRoute.post('/', authAdmin, HotelController.addHotel)
-hotelRoute.put('/', authAdmin, HotelController.editHotel)
-hotelRoute.delete('/', authAdmin, HotelController.removeHotel)
+//ALL USER
+hotelRoute.get('/all', HotelController.listHotel)
 
-// hotelRoute.get('/:HotelId/', authAdmin, HotelController.detailHotel);
-hotelRoute.post('/:HotelId/add-room', authAdmin, RoomController.addRoom);
+//ADMIN
+hotelRoute.post('/admin', authAdmin, HotelController.addHotel)
+hotelRoute.put('/admin/:id', authAdmin, HotelController.editHotel)
+hotelRoute.delete('/admin/:id', authAdmin, HotelController.deleteHotel)
+
+// //CUSTOMER
+hotelRoute.get('/', authUser, HotelController.listHotelAvailable)
 
 module.exports = hotelRoute

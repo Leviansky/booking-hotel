@@ -2,29 +2,26 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Bookings', {
+    await queryInterface.createTable('Rooms', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      dataCheckin: {
-        type: Sequelize.DATE
+      roomNumbers: {
+        type: Sequelize.INTEGER
       },
-      dataCheckout: {
-        type: Sequelize.DATE
-      },
-      total_customer: {
+      price: {
         type: Sequelize.INTEGER
       },
       status: {
         type: Sequelize.STRING
       },
-      CustomerId: {
+      HotelId: {
         type: Sequelize.INTEGER
       },
-      HotelId: {
+      BookingId: {
         type: Sequelize.INTEGER
       },
       createdAt: {
@@ -38,6 +35,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Bookings');
+    await queryInterface.dropTable('Rooms');
   }
 };

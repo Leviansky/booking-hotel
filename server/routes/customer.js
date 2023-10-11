@@ -1,9 +1,14 @@
 const customerRoute = require('express').Router();
 const { CustomerController } = require('../controllers');
-const { authAdmin } = require('../middleware/authentication')
+const { authAdmin, authUser } = require('../middleware/authentication')
 
-customerRoute.get('/', authAdmin, CustomerController.getAllCustomer);
+//ALL USER
 customerRoute.post('/register', CustomerController.register);
 customerRoute.get('/login', CustomerController.login);
+customerRoute.put('/:UserId', authUser, CustomerController.edit)
+
+//ADMIN
+customerRoute.get('/', authAdmin, CustomerController.getAllCustomer);
+customerRoute.delete('/:UserId', authAdmin, CustomerController.deleteUser)
 
 module.exports = customerRoute;
