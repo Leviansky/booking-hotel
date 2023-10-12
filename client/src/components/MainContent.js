@@ -8,6 +8,7 @@ import {
   RegisterPage,
   AboutPage,
   AdminPage,
+  Customers,
 } from "../pages";
 
 const MainContent = () => {
@@ -21,6 +22,7 @@ const MainContent = () => {
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
         <Route path="/admin" element={<AdminPage />}></Route>
+        <Route path="/admins" element={<Customers/>}></Route>
       </Routes>
     </>
   );

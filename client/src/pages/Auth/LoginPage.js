@@ -25,7 +25,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="container-auth">
+    <div className="container-auth mt-5">
       <img
         src={AuthPhoto}
         alt="image"

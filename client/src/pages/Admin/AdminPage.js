@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import "./Admin.css";
 import { Link, useNavigate } from "react-router-dom";
+import Customers from "./Customers";
 
 const AdminPage = () => {
   const [style, setStyle] = useState(
     "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
   );
+  const year = new Date().getFullYear();
   const navigate = useNavigate();
 
   const logoutHandler = () => {
@@ -39,171 +41,59 @@ const AdminPage = () => {
     <div className="admin">
       <div id="wrapper">
         <ul className={style} id="accordionSidebar">
-          <a
+          <Link
             className="sidebar-brand d-flex align-items-center justify-content-center"
-            href="#"
+            to="#"
           >
-            <div className="sidebar-brand-icon rotate-n-15">
-              <i className="fas fa-laugh-wink"></i>
-            </div>
             <div className="sidebar-brand-text mx-3">
-              SB Admin <sup>2</sup>
+              Admin <sup>XYZ</sup>
             </div>
-            <div className="text-center d-none d-md-inline">
-              <button
-                className="rounded-circle border-0"
-                id="sidebarToggle"
-                onClick={changeStyle}
-              ></button>
-            </div>
-          </a>
+          </Link>
 
           <hr className="sidebar-divider my-0" />
 
           <li className="nav-item active">
-            <a className="nav-link" href="index.html">
+            <Link className="nav-link" to="index.html">
               <i className="fas fa-fw fa-tachometer-alt"></i>
               <span>Dashboard</span>
-            </a>
+            </Link>
           </li>
 
           <hr className="sidebar-divider" />
 
-          <div className="sidebar-heading">Interface</div>
+          <div className="sidebar-heading">Features</div>
 
           <li className="nav-item">
-            <a
-              className="nav-link collapsed"
-              href="#"
-              data-toggle="collapse"
-              data-target="#collapseTwo"
-              aria-expanded="true"
-              aria-controls="collapseTwo"
+            <Link
+              className="nav-link"
+              to=""
             >
-              <i className="fas fa-fw fa-cog"></i>
-              <span>Components</span>
-            </a>
-            <div
-              id="collapseTwo"
-              className="collapse"
-              aria-labelledby="headingTwo"
-              data-parent="#accordionSidebar"
-            >
-              <div className="bg-white py-2 collapse-inner rounded">
-                <h6 className="collapse-header">Custom Components:</h6>
-                <a className="collapse-item" href="buttons.html">
-                  Buttons
-                </a>
-                <a className="collapse-item" href="cards.html">
-                  Cards
-                </a>
-              </div>
-            </div>
+              <i className="fas fa-fw fa-user"></i>
+              <span>Customers</span>
+            </Link>
           </li>
 
           <li className="nav-item">
-            <a
-              className="nav-link collapsed"
-              href="#"
-              data-toggle="collapse"
-              data-target="#collapseUtilities"
-              aria-expanded="true"
-              aria-controls="collapseUtilities"
+            <Link
+              className="nav-link"
+              to={Customers}
             >
-              <i className="fas fa-fw fa-wrench"></i>
-              <span>Utilities</span>
-            </a>
-            <div
-              id="collapseUtilities"
-              className="collapse"
-              aria-labelledby="headingUtilities"
-              data-parent="#accordionSidebar"
-            >
-              <div className="bg-white py-2 collapse-inner rounded">
-                <h6 className="collapse-header">Custom Utilities:</h6>
-                <a className="collapse-item" href="utilities-color.html">
-                  Colors
-                </a>
-                <a className="collapse-item" href="utilities-border.html">
-                  Borders
-                </a>
-                <a className="collapse-item" href="utilities-animation.html">
-                  Animations
-                </a>
-                <a className="collapse-item" href="utilities-other.html">
-                  Other
-                </a>
-              </div>
-            </div>
+              <i className="fas fa-fw fa-building"></i>
+              <span>Hotels</span>
+            </Link>
           </li>
 
           <hr className="sidebar-divider" />
-
-          <div className="sidebar-heading">Addons</div>
-
-          <li className="nav-item">
-            <a
-              className="nav-link collapsed"
-              href="#"
-              data-toggle="collapse"
-              data-target="#collapsePages"
-              aria-expanded="true"
-              aria-controls="collapsePages"
-            >
-              <i className="fas fa-fw fa-folder"></i>
-              <span>Pages</span>
-            </a>
-            <div
-              id="collapsePages"
-              className="collapse"
-              aria-labelledby="headingPages"
-              data-parent="#accordionSidebar"
-            >
-              <div className="bg-white py-2 collapse-inner rounded">
-                <h6 className="collapse-header">Login Screens:</h6>
-                <a className="collapse-item" href="login.html">
-                  Login
-                </a>
-                <a className="collapse-item" href="register.html">
-                  Register
-                </a>
-                <a className="collapse-item" href="forgot-password.html">
-                  Forgot Password
-                </a>
-                <div className="collapse-divider"></div>
-                <h6 className="collapse-header">Other Pages:</h6>
-                <a className="collapse-item" href="404.html">
-                  404 Page
-                </a>
-                <a className="collapse-item" href="blank.html">
-                  Blank Page
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li className="nav-item">
-            <a className="nav-link" href="charts.html">
-              <i className="fas fa-fw fa-chart-area"></i>
-              <span>Charts</span>
-            </a>
-          </li>
-
-          <li className="nav-item">
-            <a className="nav-link" href="tables.html">
-              <i className="fas fa-fw fa-table"></i>
-              <span>Tables</span>
-            </a>
-          </li>
 
           <hr className="sidebar-divider d-none d-md-block" />
 
-          {/* <div className="text-center d-none d-md-inline">
+          <div className="text-center d-none d-md-inline">
             <button
               className="rounded-circle border-0"
               id="sidebarToggle"
+              onClick={changeStyle}
             ></button>
-          </div> */}
+          </div>
         </ul>
 
         <div id="content-wrapper" className="d-flex flex-column">
@@ -236,9 +126,9 @@ const AdminPage = () => {
 
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item dropdown no-arrow d-sm-none">
-                  <a
+                  <Link
                     className="nav-link dropdown-toggle"
-                    href="#"
+                    to="#"
                     id="searchDropdown"
                     role="button"
                     data-toggle="dropdown"
@@ -246,7 +136,7 @@ const AdminPage = () => {
                     aria-expanded="false"
                   >
                     <i className="fas fa-search fa-fw"></i>
-                  </a>
+                  </Link>
                   <div
                     className="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                     aria-labelledby="searchDropdown"
@@ -270,204 +160,12 @@ const AdminPage = () => {
                   </div>
                 </li>
 
-                <li className="nav-item dropdown no-arrow mx-1">
-                  <a
-                    className="nav-link dropdown-toggle"
-                    href="#"
-                    id="alertsDropdown"
-                    role="button"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <i className="fas fa-bell fa-fw"></i>
-                    <span className="badge badge-danger badge-counter">3+</span>
-                  </a>
-                  <div
-                    className="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                    aria-labelledby="alertsDropdown"
-                  >
-                    <h6 className="dropdown-header">Alerts Center</h6>
-                    <a
-                      className="dropdown-item d-flex align-items-center"
-                      href="#"
-                    >
-                      <div className="mr-3">
-                        <div className="icon-circle bg-primary">
-                          <i className="fas fa-file-alt text-white"></i>
-                        </div>
-                      </div>
-                      <div>
-                        <div className="small text-gray-500">
-                          December 12, 2019
-                        </div>
-                        <span className="font-weight-bold">
-                          A new monthly report is ready to download!
-                        </span>
-                      </div>
-                    </a>
-                    <a
-                      className="dropdown-item d-flex align-items-center"
-                      href="#"
-                    >
-                      <div className="mr-3">
-                        <div className="icon-circle bg-success">
-                          <i className="fas fa-donate text-white"></i>
-                        </div>
-                      </div>
-                      <div>
-                        <div className="small text-gray-500">
-                          December 7, 2019
-                        </div>
-                        $290.29 has been deposited into your account!
-                      </div>
-                    </a>
-                    <a
-                      className="dropdown-item d-flex align-items-center"
-                      href="#"
-                    >
-                      <div className="mr-3">
-                        <div className="icon-circle bg-warning">
-                          <i className="fas fa-exclamation-triangle text-white"></i>
-                        </div>
-                      </div>
-                      <div>
-                        <div className="small text-gray-500">
-                          December 2, 2019
-                        </div>
-                        Spending Alert: We've noticed unusually high spending
-                        for your account.
-                      </div>
-                    </a>
-                    <a
-                      className="dropdown-item text-center small text-gray-500"
-                      href="#"
-                    >
-                      Show All Alerts
-                    </a>
-                  </div>
-                </li>
-
-                <li className="nav-item dropdown no-arrow mx-1">
-                  <a
-                    className="nav-link dropdown-toggle"
-                    href="#"
-                    id="messagesDropdown"
-                    role="button"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <i className="fas fa-envelope fa-fw"></i>
-                    <span className="badge badge-danger badge-counter">7</span>
-                  </a>
-                  <div
-                    className="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                    aria-labelledby="messagesDropdown"
-                  >
-                    <h6 className="dropdown-header">Message Center</h6>
-                    <a
-                      className="dropdown-item d-flex align-items-center"
-                      href="#"
-                    >
-                      <div className="dropdown-list-image mr-3">
-                        <img
-                          className="rounded-circle"
-                          src="img/undraw_profile_1.svg"
-                          alt="..."
-                        />
-                        <div className="status-indicator bg-success"></div>
-                      </div>
-                      <div className="font-weight-bold">
-                        <div className="text-truncate">
-                          Hi there! I am wondering if you can help me with a
-                          problem I've been having.
-                        </div>
-                        <div className="small text-gray-500">
-                          Emily Fowler · 58m
-                        </div>
-                      </div>
-                    </a>
-                    <a
-                      className="dropdown-item d-flex align-items-center"
-                      href="#"
-                    >
-                      <div className="dropdown-list-image mr-3">
-                        <img
-                          className="rounded-circle"
-                          src="img/undraw_profile_2.svg"
-                          alt="..."
-                        />
-                        <div className="status-indicator"></div>
-                      </div>
-                      <div>
-                        <div className="text-truncate">
-                          I have the photos that you ordered last month, how
-                          would you like them sent to you?
-                        </div>
-                        <div className="small text-gray-500">Jae Chun · 1d</div>
-                      </div>
-                    </a>
-                    <a
-                      className="dropdown-item d-flex align-items-center"
-                      href="#"
-                    >
-                      <div className="dropdown-list-image mr-3">
-                        <img
-                          className="rounded-circle"
-                          src="img/undraw_profile_3.svg"
-                          alt="..."
-                        />
-                        <div className="status-indicator bg-warning"></div>
-                      </div>
-                      <div>
-                        <div className="text-truncate">
-                          Last month's report looks great, I am very happy with
-                          the progress so far, keep up the good work!
-                        </div>
-                        <div className="small text-gray-500">
-                          Morgan Alvarez · 2d
-                        </div>
-                      </div>
-                    </a>
-                    <a
-                      className="dropdown-item d-flex align-items-center"
-                      href="#"
-                    >
-                      <div className="dropdown-list-image mr-3">
-                        <img
-                          className="rounded-circle"
-                          src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                          alt="..."
-                        />
-                        <div className="status-indicator bg-success"></div>
-                      </div>
-                      <div>
-                        <div className="text-truncate">
-                          Am I a good boy? The reason I ask is because someone
-                          told me that people say this to all dogs, even if they
-                          aren't good...
-                        </div>
-                        <div className="small text-gray-500">
-                          Chicken the Dog · 2w
-                        </div>
-                      </div>
-                    </a>
-                    <a
-                      className="dropdown-item text-center small text-gray-500"
-                      href="#"
-                    >
-                      Read More Messages
-                    </a>
-                  </div>
-                </li>
-
                 <div className="topbar-divider d-none d-sm-block"></div>
 
                 <li className="nav-item dropdown no-arrow">
-                  <a
+                  <Link
                     className="nav-link dropdown-toggle"
-                    href="#"
+                    to="#"
                     id="userDropdown"
                     role="button"
                     data-toggle="dropdown"
@@ -481,34 +179,34 @@ const AdminPage = () => {
                       className="img-profile rounded-circle"
                       src="img/undraw_profile.svg"
                     />
-                  </a>
+                  </Link>
                   <div
                     className="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                     aria-labelledby="userDropdown"
                   >
-                    <a className="dropdown-item" href="#">
+                    <Link className="dropdown-item" to="#">
                       <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                       Profile
-                    </a>
-                    <a className="dropdown-item" href="#">
+                    </Link>
+                    <Link className="dropdown-item" to="#">
                       <i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                       Settings
-                    </a>
-                    <a className="dropdown-item" href="#">
+                    </Link>
+                    <Link className="dropdown-item" to="#">
                       <i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                       Activity Log
-                    </a>
+                    </Link>
                     <div className="dropdown-divider"></div>
-                    <a
+                    <Link
                       className="dropdown-item"
-                      href="#"
+                      to="#"
                       data-toggle="modal"
                       data-target="#logoutModal"
                       onClick={() => logoutHandler()}
                     >
                       <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                       Logout
-                    </a>
+                    </Link>
                   </div>
                 </li>
               </ul>
@@ -517,13 +215,6 @@ const AdminPage = () => {
             <div className="container-fluid">
               <div className="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
-                <a
-                  href="#"
-                  className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-                >
-                  <i className="fas fa-download fa-sm text-white-50"></i>{" "}
-                  Generate Report
-                </a>
               </div>
 
               <div className="row">
@@ -628,9 +319,9 @@ const AdminPage = () => {
                         Earnings Overview
                       </h6>
                       <div className="dropdown no-arrow">
-                        <a
+                        <Link
                           className="dropdown-toggle"
-                          href="#"
+                          to="#"
                           role="button"
                           id="dropdownMenuLink"
                           data-toggle="dropdown"
@@ -638,7 +329,7 @@ const AdminPage = () => {
                           aria-expanded="false"
                         >
                           <i className="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                        </a>
+                        </Link>
                         <div
                           className="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                           aria-labelledby="dropdownMenuLink"
@@ -646,16 +337,16 @@ const AdminPage = () => {
                           <div className="dropdown-header">
                             Dropdown Header:
                           </div>
-                          <a className="dropdown-item" href="#">
+                          <Link className="dropdown-item" to="#">
                             Action
-                          </a>
-                          <a className="dropdown-item" href="#">
+                          </Link>
+                          <Link className="dropdown-item" to="#">
                             Another action
-                          </a>
+                          </Link>
                           <div className="dropdown-divider"></div>
-                          <a className="dropdown-item" href="#">
+                          <Link className="dropdown-item" to="#">
                             Something else here
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -674,9 +365,9 @@ const AdminPage = () => {
                         Revenue Sources
                       </h6>
                       <div className="dropdown no-arrow">
-                        <a
+                        <Link
                           className="dropdown-toggle"
-                          href="#"
+                          to="#"
                           role="button"
                           id="dropdownMenuLink"
                           data-toggle="dropdown"
@@ -684,7 +375,7 @@ const AdminPage = () => {
                           aria-expanded="false"
                         >
                           <i className="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                        </a>
+                        </Link>
                         <div
                           className="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                           aria-labelledby="dropdownMenuLink"
@@ -692,16 +383,16 @@ const AdminPage = () => {
                           <div className="dropdown-header">
                             Dropdown Header:
                           </div>
-                          <a className="dropdown-item" href="#">
+                          <Link className="dropdown-item" to="#">
                             Action
-                          </a>
-                          <a className="dropdown-item" href="#">
+                          </Link>
+                          <Link className="dropdown-item" to="#">
                             Another action
-                          </a>
+                          </Link>
                           <div className="dropdown-divider"></div>
-                          <a className="dropdown-item" href="#">
+                          <Link className="dropdown-item" to="#">
                             Something else here
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -724,107 +415,22 @@ const AdminPage = () => {
                   </div>
                 </div>
               </div>
-
-              <div className="row">
-                <div className="col-lg-6 mb-4">
-                  <div className="card shadow mb-4">
-                    <div className="card-header py-3">
-                      <h6 className="m-0 font-weight-bold text-primary">
-                        Projects
-                      </h6>
-                    </div>
-                    <div className="card-body">
-                      <h4 className="small font-weight-bold">
-                        Server Migration{" "}
-                        <span className="float-right">20%</span>
-                      </h4>
-                      <div className="progress mb-4">
-                        <div
-                          className="progress-bar bg-danger a1"
-                          role="progressbar"
-                        ></div>
-                      </div>
-                      <h4 className="small font-weight-bold">
-                        Sales Tracking <span className="float-right">40%</span>
-                      </h4>
-                      <div className="progress mb-4">
-                        <div
-                          className="progress-bar bg-warning a2"
-                          role="progressbar"
-                        ></div>
-                      </div>
-                      <h4 className="small font-weight-bold">
-                        Customer Database{" "}
-                        <span className="float-right">60%</span>
-                      </h4>
-                      <div className="progress mb-4">
-                        <div
-                          className="progress-bar a4"
-                          role="progressbar"
-                        ></div>
-                      </div>
-                      <h4 className="small font-weight-bold">
-                        Payout Details <span className="float-right">80%</span>
-                      </h4>
-                      <div className="progress mb-4">
-                        <div
-                          className="progress-bar bg-info a5"
-                          role="progressbar"
-                        ></div>
-                      </div>
-                      <h4 className="small font-weight-bold">
-                        Account Setup{" "}
-                        <span className="float-right">Complete!</span>
-                      </h4>
-                      <div className="progress">
-                        <div
-                          className="progress-bar bg-success a6"
-                          role="progressbar"
-                        ></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="col-lg-6 mb-4">
-                  <div className="card shadow mb-4">
-                    <div className="card-header py-3">
-                      <h6 className="m-0 font-weight-bold text-primary">
-                        Development Approach
-                      </h6>
-                    </div>
-                    <div className="card-body">
-                      <p>
-                        SB Admin 2 makes extensive use of Bootstrap 4 utility
-                        classNamees in order to reduce CSS bloat and poor page
-                        performance. Custom CSS classNamees are used to create
-                        custom components and custom utility classNamees.
-                      </p>
-                      <p className="mb-0">
-                        Before working with this theme, you should become
-                        familiar with the Bootstrap framework, especially the
-                        utility classNamees.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
 
           <footer className="sticky-footer bg-white">
             <div className="container my-auto">
               <div className="copyright text-center my-auto">
-                <span>Copyright &copy; Your Website 2021</span>
+                <span>Copyright &copy; {year}</span>
               </div>
             </div>
           </footer>
         </div>
       </div>
 
-      <a className="scroll-to-top rounded" href="#page-top">
+      <Link className="scroll-to-top rounded" to="#page-top">
         <i className="fas fa-angle-up"></i>
-      </a>
+      </Link>
 
       <div
         className="modal fade"
@@ -861,9 +467,9 @@ const AdminPage = () => {
               >
                 Cancel
               </button>
-              <a className="btn btn-primary" href="login.html">
+              <Link className="btn btn-primary" to="login.html">
                 Logout
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -17,15 +17,16 @@ const LoginPage = () => {
 
   const registerHandler = async() => {
     try {
-      let result = await register({username, email, password})
-      console.log(result)
+      let result = await register({username, email, password}) 
+      navigate("/login")
+      // console.log(result)
     } catch (error) {
       console.log(error.message)
     }
   }
 
   return (
-    <div className="container-auth">
+    <div className="container-auth mt-5">
       <img src={AuthPhoto} alt="image" />
       <div></div>
       <div className="inputs">

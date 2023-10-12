@@ -4,11 +4,11 @@
 :root {
   font-size: 15px;
   margin: 0;
+  padding: 0;
 }
 
 body {
   font-family: "EB Garamond", sans-serif;
-  padding-top: 60px;
 }
 @media (max-width: 980px) {
   body {
@@ -22,7 +22,7 @@ body {
 
 /* navbar style */
 .navbar-hotel {
-  position: fixed;
+  position: relative;
   width: 100%;
   z-index: 1000000;
   top: 0;

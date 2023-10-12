@@ -5,4 +5,11 @@ import Carousels from "./Carousels";
 import SearchBarView from "./SearchBarView";
 import HotelCard from "./HotelCard";
 
-export { Navbar, SearchBarView, HotelCard, Carousels, MainContent, Footer };
+export {
+  Navbar,
+  SearchBarView,
+  HotelCard,
+  Carousels,
+  Footer,
+  MainContent,
+};
