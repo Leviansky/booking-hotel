@@ -1,6 +1,13 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { HomePage, Hotel, Room, LoginPage, AboutPage } from "../pages";
+import {
+  HomePage,
+  HotelPage,
+  RoomPage,
+  LoginPage,
+  RegisterPage,
+  AboutPage,
+} from "../pages";
 
 const MainContent = () => {
   return (
@@ -8,9 +15,10 @@ const MainContent = () => {
       <Routes>
         <Route path="" element={<HomePage />}></Route>
         <Route path="/about" element={<AboutPage />}></Route>
-        <Route path="/hotels" element={<Hotel />}></Route>
-        <Route path="/rooms" element={<Room />}></Route>
+        <Route path="/hotels" element={<HotelPage />}></Route>
+        <Route path="/rooms" element={<RoomPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
+        <Route path="/register" element={<RegisterPage />}></Route>
       </Routes>
     </>
   );

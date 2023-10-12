@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, SearchBarView, Footer, HotelCard } from "../../components";
 
-const Hotel = () => {
+const HotelPage = () => {
   return (
     <div>
       <Navbar />
@@ -12,4 +12,4 @@ const Hotel = () => {
   );
 };
 
-export default Hotel;
+export default HotelPage;

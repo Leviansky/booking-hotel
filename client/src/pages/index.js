@@ -1,11 +1,12 @@
-import HomePage from "./HomePage";
-import AboutPage from "./AboutPage";
-import LoginPage from "./LoginPage";
+import HomePage from "./Contents/HomePage";
+import AboutPage from "./Contents/AboutPage";
+import LoginPage from "./Auth/LoginPage";
+import RegisterPage from "./Auth/RegisterPage";
 
 // Hotels
-import Hotel from "./Hotels/Hotel";
+import HotelPage from "./Hotels/HotelPage";
 
 // Rooms
-import Room from "./Rooms/Room";
+import RoomPage from "./Rooms/RoomPage";
 
-export { HomePage, AboutPage, LoginPage, Hotel, Room };
+export { HomePage, AboutPage, LoginPage, RegisterPage, HotelPage, RoomPage };

@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* about */
+.about {
+  margin: auto;
+  max-width: 100%;
+  padding: 0 0px;
+  overflow: auto;
+}
+.info-left {
+  float: left;
+  width: 50%;
+}
+.info-right img {
+  width: 70%;
+  max-height: 40vh;
+}
+.img-about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

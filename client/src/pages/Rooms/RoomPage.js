@@ -1,14 +1,14 @@
 import React from "react";
 import { Navbar, Footer } from "../../components";
 
-const Room = () => {
+const RoomPage = () => {
   return (
     <div>
       <Navbar />
-      Room
+      RoomPage
       <Footer />
     </div>
   );
 };
 
-export default Room;
+export default RoomPage;

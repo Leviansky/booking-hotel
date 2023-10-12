@@ -6,7 +6,7 @@ const Navbar = () => {
     <>
       <nav class="navbar navbar-expand-lg bg-body-tertiary ">
         <div class="container-fluid">
-          <Link class="navbar-brand" to="#">Hotel</Link>
+          <Link class="navbar-brand" to="#">HotelLier</Link>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -21,7 +21,7 @@ const Navbar = () => {
               <li class="nav-item">
                 <Link class="nav-link" to="/hotels">Hotels</Link>
               </li>
-              <Link class="btn btn-outline-success" to="/login">Login</Link>
+              <Link class="btn btn-outline-success me-4" to="/login">Login</Link>
             </ul>
           </div>
         </div>

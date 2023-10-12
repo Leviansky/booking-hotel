@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Carousels, Footer } from "../components";
+import { Navbar, Carousels, Footer } from "../../components";
 
 const HomePage = () => {
   return (
