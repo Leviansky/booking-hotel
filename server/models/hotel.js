@@ -1,4 +1,3 @@
-const { Room } = require('../models');
 'use strict';
 const {
   Model
@@ -17,12 +16,36 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Hotel.init({
-    name: DataTypes.STRING,
-    address: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          message: `Name Hotel can't be empty`,
+        },
+      },
+    },
+    image: DataTypes.STRING,
+    address: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          message: `Image can't be empty`,
+        },
+      },
+    },
+    description: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          message: `Description can't be empty`,
+        },
+      },
+    },
     total_room: DataTypes.INTEGER
   }, {
     hooks: {
       beforeCreate: function(hotel, options) {
+        hotel.image = hotel.image || 'https://i.pinimg.com/236x/fb/b6/04/fbb604d1ae6e1e5d1f1a5ee72b3af779.jpg'
         hotel.total_room = 0;
       }
     },

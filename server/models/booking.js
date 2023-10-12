@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Booking.belongsTo(models.Customer)
       Booking.belongsTo(models.Hotel)
+      Booking.belongsTo(models.Room)
     }
   }
   Booking.init({
@@ -21,7 +22,8 @@ module.exports = (sequelize, DataTypes) => {
     total_customer: DataTypes.INTEGER,
     status: DataTypes.STRING,
     CustomerId: DataTypes.INTEGER,
-    HotelId: DataTypes.INTEGER
+    HotelId: DataTypes.INTEGER,
+    RoomId: DataTypes.INTEGER
   }, {
     hooks: {
       beforeCreate: function(booking, options) {
