@@ -9,7 +9,7 @@ const AboutPage = () => {
       <Navbar />
       <div className="about">
         <div className="row p-3">
-          <div className="col info-left">
+          <div className="col info-left text-center">
             <h1>
               <span className="text-warning">About </span>Us{" "}
             </h1>
@@ -30,7 +30,7 @@ const AboutPage = () => {
           <div className="col info-right">
             <div className="img-about">
               <img
-                src="https://images.pexels.com/photos/205342/pexels-photo-205342.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                src={About1}
                 alt="About Page"
               />
             </div>

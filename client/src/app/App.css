@@ -3,6 +3,7 @@
 
 :root {
   font-size: 15px;
+  margin: 0;
 }
 
 body {
@@ -20,7 +21,7 @@ body {
 }
 
 /* navbar style */
-.navbar {
+.navbar-hotel {
   position: fixed;
   width: 100%;
   z-index: 1000000;

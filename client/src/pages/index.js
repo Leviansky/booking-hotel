@@ -9,4 +9,15 @@ import HotelPage from "./Hotels/HotelPage";
 // Rooms
 import RoomPage from "./Rooms/RoomPage";
 
-export { HomePage, AboutPage, LoginPage, RegisterPage, HotelPage, RoomPage };
+// Admin
+import AdminPage from "./Admin/AdminPage";
+
+export {
+  HomePage,
+  AboutPage,
+  LoginPage,
+  RegisterPage,
+  HotelPage,
+  RoomPage,
+  AdminPage,
+};
