@@ -4,13 +4,25 @@ import { GoPerson } from "react-icons/go";
 import AuthPhoto  from "../../images/img-auth.jpg";
 // import { login } from "../../axios/authAxios";
 import "./Auth.css";
+import axios from "axios";
+import { register } from "../../axios/authAxios";
 
 const LoginPage = () => {
   const year = new Date().getFullYear();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const registerHandler = async() => {
+    try {
+      let result = await register({username, email, password})
+      console.log(result)
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
 
   return (
     <div className="container-auth">
@@ -21,7 +33,7 @@ const LoginPage = () => {
           <h1 className="fw-bold">Register</h1>
         </div>
         <div className="email_cont">
-          <input type="text" placeholder="Email" />
+          <input type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)}/>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -37,11 +49,11 @@ const LoginPage = () => {
           </svg>
         </div>
         <div className="email_cont">
-          <input type="text" placeholder="Username" />
+          <input type="text" placeholder="Username"  onChange={(e) => setUsername(e.target.value)}/>
           <GoPerson />
         </div>
         <div className="pass_cont">
-          <input type="password" placeholder="Password" />
+          <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -57,7 +69,7 @@ const LoginPage = () => {
             />
           </svg>
         </div>
-        <button className="btn btn-primary">Register</button>
+        <button className="btn btn-primary" onClick={() => registerHandler()}>Register</button>
         <Link className="text-center" to="/login">
           Already have an account? Login
         </Link>

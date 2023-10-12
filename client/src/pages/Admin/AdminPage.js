@@ -1,10 +1,17 @@
 import React, { useState } from "react";
 import "./Admin.css";
+import { Link, useNavigate } from "react-router-dom";
 
 const AdminPage = () => {
   const [style, setStyle] = useState(
     "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
   );
+  const navigate = useNavigate();
+
+  const logoutHandler = () => {
+    localStorage.clear()
+    navigate('/')
+  }
 
   const changeStyle = () => {
     if (
@@ -497,6 +504,7 @@ const AdminPage = () => {
                       href="#"
                       data-toggle="modal"
                       data-target="#logoutModal"
+                      onClick={() => logoutHandler()}
                     >
                       <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                       Logout

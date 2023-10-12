@@ -1,27 +1,28 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthPhoto from "../../images/img-auth.jpg";
-// import { login } from "../../axios/authAxios";
+import { login } from "../../axios/authAxios";
 import "./Auth.css";
 
 const LoginPage = () => {
   const year = new Date().getFullYear();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-  // const loginHandler = () => {
-  //   let access_token = "";
-  //   login(
-  //     {
-  //       username,
-  //       password,
-  //     },
-  //     () => localstorage.setItem(access_token)
-  //   );
-  //   navigate("/admin");
-  // };
+  const loginHandler = async () => {
+    try {
+      let result = await login({username, password})
+      if(result !== undefined) {
+        localStorage.setItem("access_token", result.access_token)
+        if(result.role === 'admin'){navigate("/admin")}
+        // if(result.role === 'user'){}
+      }
+    } catch (error) {
+      console.log(error.message)
+    }
+  };
 
   return (
     <div className="container-auth">
@@ -35,7 +36,7 @@ const LoginPage = () => {
           <h1 className="fw-bold">Login</h1>
         </div>
         <div className="email_cont">
-          <input type="text" placeholder="Email or Username" />
+          <input type="text" placeholder="Email or Username" onChange={(e) => setUsername(e.target.value)}/>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -51,7 +52,7 @@ const LoginPage = () => {
           </svg>
         </div>
         <div className="pass_cont">
-          <input type="password" placeholder="Password" />
+          <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -67,7 +68,7 @@ const LoginPage = () => {
             />
           </svg>
         </div>
-        <button className="btn btn-primary">Login</button>
+        <button className="btn btn-primary" onClick={() => loginHandler()}>Login</button>
         <Link className="text-center" to="/register">
           Don't have an account? Register
         </Link>
