@@ -4,24 +4,33 @@ const { Hotel, Room } = require('../models')
 class HotelController {
     static async listHotel(req, res) {
         try {
+            //GET ALL HOTEL INCLUDE ROOM
             let hotels = await Hotel.findAll({
                 include: [Room]
             })
 
+            //SEND RESULT SUCCESS
             res.status(200).json(hotels)
         } catch (err) {
+            //SEND RESULT ERROR
             res.status(500).json({ message: err.message })
         }
     }
 
     static async addHotel(req, res) {
-        const { name, address } = req.body
         try {
+            //GET DATA FROM REQUEST BODY
+            const { name, image, description, address } = req.body
+
+            //CREATE ONE HOTEL
             let created = await Hotel.create({
-                name, address
+                name, image, description, address
             })
+
+            //SEND RESULT SUCCESS
             res.status(201).json({ message: 'Hotel successfully added' })
         } catch (err) {
+            //SEND RESULT ERROR
             res.status(500).json({message: err.message})
         }
 
@@ -29,65 +38,94 @@ class HotelController {
 
     static async editHotel(req, res) {
         try {
-            const { name, address } = req.body
+            //GET DATA FROM REQUEST BODY
+            const { name, image, description, address } = req.body
+
+            //GET ID FROM REQUEST PARAMS
             const id = +req.params.id
 
+            //GET ONE HOTEL BY PRIMARY KEY
             const found = await Hotel.findByPk(id)
+
+            //SEND 404 IF THERE'S NO ONE HOTEL FOUND
             if (!found) return res.status(404).json({ message: 'Hotel not found' })
 
+            //UPDATE HOTEL WITH NEWEST DATA
             let edited = await Hotel.update({
-                name, address
+                name, image, description, address
             }, {
                 where: { id }
             })
 
+            //SEND RESULT
             edited[0] === 1 ?
                 res.status(200).json({ message: 'Hotel successfully updated' }) :
                 res.sendStatus(400)
-
         } catch (err) {
+            //SEND RESULT ERROR
             res.status(500).json({ message: err.message })
         }
     }
 
     static async deleteHotel(req, res) {
         try {
-
+            //GET ID FROM REQUEST PARAMS
             const id = +req.params.id
 
+            //SEARCH ONE HOTEL BY PRIMARY KEY
             const found = await Hotel.findByPk(id)
+
+            //SEND 404 IF THERE'S NO ONE HOTEL FOUND
             if (!found) return res.status(404).json({ message: 'Hotel not found' })
 
+            //DELETE ONE HOTEL BY ID
             const result = await Hotel.destroy({ where: { id } })
 
+            //SEND RESULT
             result === 1 ?
                 res.status(200).json({ message: 'hotel successfully removed' }) :
                 res.sendStatus(400)
         } catch (err) {
+            //SEND RESULT ERROR
             res.status(500).json({ message: err.mess })
         }
     }
 
     static async listHotelAvailable(req, res) {
         try {
+            //GET ALL HOTEL INCLUDE ROOM
             let hotels = await Hotel.findAll({
                 include: [Room]
             })
+            
+            //DECLARE RESULT ARRAY
             let result = []
+
+            //LOOPING HOTELS WITH MAP
             hotels.map(hotel => {
+                //DECLARE ROOM ARRAY
                 let Room = []
+
+                //LOOPING ROOM IN HOTEL.ROOM
                 hotel.Rooms.forEach(room => {
+                    //IF STATUS ROOM AVAILABLE
                     if(room.dataValues.status === 'available') {
+                        //SAVE NEW DATA ROOM TO ROOM ARRAY
                         Room.push(room)
                     }
                 })
+                //SAVE ROOM ARRAY TO HOTEL.ROOM
                 hotel.dataValues.Rooms = Room;
+                
+                //SAVE NEW DATA HOTEL TO RESULT ARRAY
                 result.push(hotel.dataValues)
                 return hotel
             })
-
+            
+            //SEND RESULT SUCCESS
             res.status(200).json(result)
         } catch (err) {
+            //SEND RESULT ERROR
             res.status(500).json({ message: err.message })
         }
     }
