@@ -1,4 +1,5 @@
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const URL = "http://localhost:3000/api";
 
@@ -11,7 +12,12 @@ const login = async (data) => {
     });
     return result.data
   } catch (error) {
-    console.log(error.message)
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: error.message,
+      footer: "You have entered an invalid username or password",
+    });
   }
 }
 
@@ -22,9 +28,15 @@ const register = async (data) => {
       url: URL + '/customers/register',
       data: data
     });
+    Swal.fire("Register", "Register Succes", "success");
     return result.data
   } catch (error) {
-    console.log(error.message)
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: error.message,
+      footer: "Please enter the right email!",
+    });
   }
 }
 

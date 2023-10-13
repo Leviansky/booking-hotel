@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthPhoto from "../../images/img-auth.jpg";
 import { login } from "../../axios/authAxios";
+import Swal from "sweetalert2";
 import "./Auth.css";
 
 const LoginPage = () => {
@@ -13,36 +14,40 @@ const LoginPage = () => {
 
   const loginHandler = async () => {
     try {
-      let result = await login({username, password})
-      if(result !== undefined) {
-        localStorage.setItem("access_token", result.access_token)
-        localStorage.setItem("username", result.username)
-        localStorage.setItem("name", result.name)
-        localStorage.setItem("email", result.email)
-        localStorage.setItem("avatar", result.avatar)
-        localStorage.setItem("address", result.address)
-        localStorage.setItem("phone", result.phone)
-        if(result.role === 'admin'){navigate("/admin")}
+      let result = await login({ username, password });
+      // console.log(result)
+      if (result !== undefined) {
+        localStorage.setItem("access_token", result.access_token);
+        localStorage.setItem("username", result.username);
+        localStorage.setItem("name", result.name);
+        localStorage.setItem("email", result.email);
+        localStorage.setItem("avatar", result.avatar);
+        localStorage.setItem("address", result.address);
+        localStorage.setItem("phone", result.phone);
+        if (result.role === "admin") {
+          navigate("/admin");
+        }
         // if(result.role === 'user'){}
-      }
+      } 
     } catch (error) {
-      console.log(error.message)
+      console.log(error.message);
     }
   };
 
   return (
     <div className="container-auth mt-5">
-      <img
-        src={AuthPhoto}
-        alt="image"
-      />
+      <img src={AuthPhoto} alt="image" />
       <div></div>
       <div className="inputs">
         <div className="row text-center">
           <h1 className="fw-bold">Login</h1>
         </div>
         <div className="email_cont">
-          <input type="text" placeholder="Email or Username" onChange={(e) => setUsername(e.target.value)}/>
+          <input
+            type="text"
+            placeholder="email or username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -58,7 +63,11 @@ const LoginPage = () => {
           </svg>
         </div>
         <div className="pass_cont">
-          <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+          <input
+            type="password"
+            placeholder="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -74,7 +83,9 @@ const LoginPage = () => {
             />
           </svg>
         </div>
-        <button className="btn btn-primary" onClick={() => loginHandler()}>Login</button>
+        <button className="btn btn-primary" onClick={() => loginHandler()}>
+          Login
+        </button>
         <Link className="text-center" to="/register">
           Don't have an account? Register
         </Link>

@@ -17,8 +17,10 @@ const LoginPage = () => {
 
   const registerHandler = async() => {
     try {
-      let result = await register({username, email, password}) 
-      navigate("/login")
+      let result = await register({username, email, password})
+      if (result !== undefined) {
+        navigate("/login")
+      } 
       // console.log(result)
     } catch (error) {
       console.log(error.message)
@@ -34,7 +36,7 @@ const LoginPage = () => {
           <h1 className="fw-bold">Register</h1>
         </div>
         <div className="email_cont">
-          <input type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)}/>
+          <input type="text" placeholder="examplemail@mail.com" onChange={(e) => setEmail(e.target.value)}/>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -50,11 +52,11 @@ const LoginPage = () => {
           </svg>
         </div>
         <div className="email_cont">
-          <input type="text" placeholder="Username"  onChange={(e) => setUsername(e.target.value)}/>
+          <input type="text" placeholder="username"  onChange={(e) => setUsername(e.target.value)}/>
           <GoPerson />
         </div>
         <div className="pass_cont">
-          <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+          <input type="password" placeholder="password" onChange={(e) => setPassword(e.target.value)} />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
