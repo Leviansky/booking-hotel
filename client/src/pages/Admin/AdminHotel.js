@@ -3,10 +3,12 @@ import "./Admin.css";
 import { Link, useNavigate } from "react-router-dom";
 import {
   AddHotelModal,
+  AddRoomModal,
   AdminFooter,
   AdminNavbar,
   LogoutModal,
   SideBar,
+  UpdateHotelModal,
 } from "../../components";
 
 const HotelAdmin = () => {
@@ -76,7 +78,22 @@ const HotelAdmin = () => {
                               </div>
                               <div className="col-8">
                                 <h6>Nama Hotel</h6>
-                                <span>hdhdh</span>
+                                <span>
+                                  <button
+                                    className="btn btn-primary"
+                                    data-toggle="modal"
+                                    data-target="#addRoomModal"
+                                  >
+                                    Add Room
+                                  </button>
+                                  <button
+                                    className="btn btn-warning"
+                                    data-toggle="modal"
+                                    data-target="#addRoomModal"
+                                  >
+                                    Update Room
+                                  </button>
+                                </span>
                               </div>
                             </div>
                           </td>
@@ -84,7 +101,13 @@ const HotelAdmin = () => {
                           <td>61</td>
                           <td>2011/04/25</td>
                           <td>
-                            <button className="btn btn-warning">Update</button>
+                            <button
+                              className="btn btn-warning"
+                              data-toggle="modal"
+                              data-target="#updateHotelModal"
+                            >
+                              Update
+                            </button>
                             <button className="btn btn-danger">Delete</button>
                           </td>
                         </tr>
@@ -101,6 +124,8 @@ const HotelAdmin = () => {
       </div>
 
       <AddHotelModal />
+      <AddRoomModal />
+      <UpdateHotelModal />
       <LogoutModal />
     </div>
   );
