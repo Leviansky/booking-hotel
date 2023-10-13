@@ -7,8 +7,21 @@ import {
   LogoutModal,
   SideBar,
 } from "../../components";
+import { getAllUsers } from "../../axios/authAxios";
 
 const Customers = () => {
+  const [customer, setCustomers] = useState([])
+
+  const getData = async () => {
+    let access_token = localStorage.getItem("access_token")
+    let customers = await getAllUsers(access_token)
+    setCustomers(customers)
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
+
   return (
     <div className="admin">
       <div id="wrapper">
@@ -54,18 +67,23 @@ const Customers = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
-                          <td>2011/04/25</td>
-                          <td>sss</td>
-                          <td>
-                            <button className="btn btn-warning">Update</button>
-                            <button className="btn btn-danger">Delete</button>
-                          </td>
-                        </tr>
+                        {
+                          customer.map((customer, index) => {
+                            const {name, username, email, address, phone} = customer
+                            return <tr>
+                            <td>{index+1}</td>
+                            <td>{name}</td>
+                            <td>{username}</td>
+                            <td>{email}</td>
+                            <td>{address}</td>
+                            <td>{phone}</td>
+                            <td>
+                              <button className="btn btn-warning">Update</button>
+                              <button className="btn btn-danger">Delete</button>
+                            </td>
+                          </tr>
+                          })
+                        }
                       </tbody>
                     </table>
                   </div>

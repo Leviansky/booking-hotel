@@ -7,8 +7,21 @@ import {
   LogoutModal,
   SideBar,
 } from "../../components";
+import { getAllHotels } from "../../axios/authAxios";
 
 const HotelAdmin = () => {
+  const [hotels, setHotels] = useState([])
+
+  const getData = async () => {
+    let access_token = localStorage.getItem("access_token")
+    let hotels = await getAllHotels(access_token)
+    setHotels(hotels)
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
+
   return (
     <div className="admin">
       <div id="wrapper">
@@ -70,31 +83,36 @@ const HotelAdmin = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>
-                            <div className="row">
-                              <div className="col-4">
-                                <img
-                                  className="img-fluid rounded-circle"
-                                  src="https://via.placeholder.com/100"
-                                  alt=""
-                                  srcset=""
-                                />
+                        {
+                          hotels.map((hotel,index) => {
+                            const {name, image, address, total_room, description} = hotel;
+                            return <tr>
+                            <td>{index+1}</td>
+                            <td>
+                              <div className="row">
+                                <div className="col-4">
+                                  <img
+                                    className="img-fluid rounded-circle"
+                                    src={image}
+                                    alt=""
+                                    srcset=""
+                                  />
+                                </div>
+                                <div className="col-8">
+                                  <h6>name</h6>
+                                </div>
                               </div>
-                              <div className="col-8">
-                                <h6>Nama Hotel</h6>
-                              </div>
-                            </div>
-                          </td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
-                          <td>2011/04/25</td>
-                          <td>
-                            <button className="btn btn-warning">Update</button>
-                            <button className="btn btn-danger">Delete</button>
-                          </td>
-                        </tr>
+                            </td>
+                            <td>{address}</td>
+                            <td>{total_room}</td>
+                            <td>2{description}</td>
+                            <td>
+                              <button className="btn btn-warning">Update</button>
+                              <button className="btn btn-danger">Delete</button>
+                            </td>
+                          </tr>
+                          })
+                        }
                       </tbody>
                     </table>
                   </div>
