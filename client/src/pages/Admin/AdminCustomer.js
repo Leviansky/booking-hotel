@@ -42,9 +42,6 @@ const Customers = () => {
                         Data Customer
                       </h4>
                     </div>
-                    <div className="col text-end">
-                      <button className="btn btn-primary">Add Data</button>
-                    </div>
                   </div>
                 </div>
                 <div class="card-body">
