@@ -56,7 +56,7 @@ const SideBar = () => {
 
       <li className="nav-item">
         <Link className="nav-link" to="/admin/booking">
-          <i className="fas fa-fw fa-building"></i>
+          <i className="fas fa-fw fa-door-open"></i>
           <span>Bookings</span>
         </Link>
       </li>

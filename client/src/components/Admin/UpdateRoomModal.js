@@ -4,7 +4,7 @@ const UpdateRoomModal = () => {
   return (
     <div
       className="modal fade"
-      id="addRoomModal"
+      id="updateRoomModal"
       tabindex="-1"
       role="dialog"
       aria-labelledby="updateRoomModalLabel"
@@ -31,7 +31,7 @@ const UpdateRoomModal = () => {
                 <label for="price" className="col-form-label">
                   Room Price
                 </label>
-                <input type="number" className="form-control" id="price" value="price" />
+                <input type="number" className="form-control" id="price" value="1" />
               </div>
             </form>
           </div>

@@ -1,27 +1,20 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React from 'react'
 
-const LogoutModal = () => {
-  const navigate = useNavigate();
-  const logoutHandler = () => {
-    localStorage.clear();
-    navigate("/");
-  };
-
+const ApprovePaymentModal = () => {
   return (
     <div
       className="modal fade"
-      id="logoutModal"
+      id="approvePaymentModal"
       tabindex="-1"
       role="dialog"
-      aria-labelledby="logoutModalLabel"
+      aria-labelledby="approvePaymentModalLabel"
       aria-hidden="true"
     >
       <div className="modal-dialog" role="document">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title" id="logoutModalLabel">
-              Logout
+            <h5 className="modal-title" id="approvePaymentModalLabel">
+              Approve Payment
             </h5>
             <button
               className="close"
@@ -32,7 +25,7 @@ const LogoutModal = () => {
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div className="modal-body">Are you sure want to logout?</div>
+          <div className="modal-body">Are you sure want to approve payment for this booking?</div>
           <div className="modal-footer">
             <button
               className="btn btn-secondary"
@@ -44,15 +37,14 @@ const LogoutModal = () => {
             <button
               className="btn btn-primary"
               type="button"
-              onClick={() => logoutHandler()}
             >
-              Logout
+              Yes
             </button>
           </div>
         </div>
       </div>
     </div>
   );
-};
+}
 
-export default LogoutModal;
+export default ApprovePaymentModal

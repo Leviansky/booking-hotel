@@ -6,6 +6,7 @@ import {
   AdminNavbar,
   LogoutModal,
   SideBar,
+  UpdateCustomerModal,
 } from "../../components";
 import { getAllUsers } from "../../axios/authAxios";
 
@@ -67,18 +68,28 @@ const Customers = () => {
                         {
                           customer.map((customer, index) => {
                             const {name, username, email, address, phone} = customer
-                            return <tr>
-                            <td>{index+1}</td>
-                            <td>{name}</td>
-                            <td>{username}</td>
-                            <td>{email}</td>
-                            <td>{address}</td>
-                            <td>{phone}</td>
-                            <td>
-                              <button className="btn btn-warning">Update</button>
-                              <button className="btn btn-danger">Delete</button>
-                            </td>
-                          </tr>
+                            return (
+                              <tr>
+                                <td>{index + 1}</td>
+                                <td>{name}</td>
+                                <td>{username}</td>
+                                <td>{email}</td>
+                                <td>{address}</td>
+                                <td>{phone}</td>
+                                <td>
+                                  <button
+                                    className="btn btn-warning"
+                                    data-toggle="modal"
+                                    data-target="#updateCustomerModal"
+                                  >
+                                    Update
+                                  </button>
+                                  <button className="btn btn-danger">
+                                    Delete
+                                  </button>
+                                </td>
+                              </tr>
+                            );
                           })
                         }
                       </tbody>
@@ -93,6 +104,7 @@ const Customers = () => {
         </div>
       </div>
 
+      <UpdateCustomerModal />
       <LogoutModal />
     </div>
   );

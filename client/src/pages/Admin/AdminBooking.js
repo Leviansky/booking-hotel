@@ -3,6 +3,7 @@ import "./Admin.css";
 import {
   AdminFooter,
   AdminNavbar,
+  ApprovePaymentModal,
   LogoutModal,
   SideBar,
 } from "../../components";
@@ -62,26 +63,36 @@ const AdminBooking = () => {
                           <th>Check In</th>
                           <th>Check Out</th>
                           <th>Status</th>
-                          <th>Payment</th>
+                          <th>Actions</th>
                         </tr>
                       </thead>
                       <tbody>
                         {
                           bookings.map((booking, index) => {
                             const {Customer, Hotel, Room, dataCheckin, dataCheckout, status} = booking
-                            return <tr>
-                            <td>{index+1}</td>
-                            <td>{Customer.name}</td>
-                            <td>{Hotel.name}</td>
-                            <td>{Room ? Room.name : 0}</td>
-                            <td>{dataCheckin}</td>
-                            <td>{dataCheckout}</td>
-                            <td>{status}</td>
-                            <td>
-                              <button className="btn btn-warning">Update</button>
-                              <button className="btn btn-danger">Delete</button>
-                            </td>
-                          </tr>
+                            return (
+                              <tr>
+                                <td>{index + 1}</td>
+                                <td>{Customer.name}</td>
+                                <td>{Hotel.name}</td>
+                                <td>{Room ? Room.roomNumbers : 0}</td>
+                                <td>{dataCheckin}</td>
+                                <td>{dataCheckout}</td>
+                                <td>{status}</td>
+                                <td>
+                                  <button
+                                    className="btn btn-success"
+                                    data-toggle="modal"
+                                    data-target="#approvePaymentModal"
+                                  >
+                                    Approve
+                                  </button>
+                                  <button className="btn btn-danger">
+                                    Check Out
+                                  </button>
+                                </td>
+                              </tr>
+                            );
                           })
                         }
                       </tbody>
@@ -96,6 +107,7 @@ const AdminBooking = () => {
         </div>
       </div>
 
+      <ApprovePaymentModal />
       <LogoutModal />
     </div>
   );

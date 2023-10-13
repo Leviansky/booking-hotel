@@ -9,6 +9,7 @@ import {
   LogoutModal,
   SideBar,
   UpdateHotelModal,
+  UpdateRoomModal,
 } from "../../components";
 
 const HotelAdmin = () => {
@@ -89,7 +90,7 @@ const HotelAdmin = () => {
                                   <button
                                     className="btn btn-warning"
                                     data-toggle="modal"
-                                    data-target="#addRoomModal"
+                                    data-target="#updateRoomModal"
                                   >
                                     Update Room
                                   </button>
@@ -126,6 +127,7 @@ const HotelAdmin = () => {
       <AddHotelModal />
       <AddRoomModal />
       <UpdateHotelModal />
+      <UpdateRoomModal />
       <LogoutModal />
     </div>
   );

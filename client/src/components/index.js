@@ -13,6 +13,8 @@ import AddHotelModal from "./Admin/AddHotelModal";
 import AddRoomModal from "./Admin/AddRoomModal";
 import UpdateHotelModal from "./Admin/UpdateHotelModal";
 import UpdateRoomModal from "./Admin/UpdateRoomModal";
+import UpdateCustomerModal from "./Admin/UpdateCustomerModal";
+import ApprovePaymentModal from "./Admin/ApprovePaymentModal";
 import AdminFooter from "./Admin/Footer";
 
 export {
@@ -29,5 +31,7 @@ export {
   AddRoomModal,
   UpdateHotelModal,
   UpdateRoomModal,
+  UpdateCustomerModal,
+  ApprovePaymentModal,
   MainContent,
 };
