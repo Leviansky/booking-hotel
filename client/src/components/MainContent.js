@@ -9,7 +9,8 @@ import {
   RegisterPage,
   AboutPage,
   AdminHotel,
-  AdminCustomer
+  AdminCustomer,
+  AdminBooking
 } from "../pages";
 
 const MainContent = () => {
@@ -25,6 +26,7 @@ const MainContent = () => {
         <Route path="/admin" element={<AdminPage />}></Route>
         <Route path="/admin/hotel" element={<AdminHotel />}></Route>
         <Route path="/admin/customer" element={<AdminCustomer />}></Route>
+        <Route path="/admin/booking" element={<AdminBooking />}></Route>
       </Routes>
     </>
   );

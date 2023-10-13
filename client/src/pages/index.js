@@ -13,6 +13,7 @@ import RoomPage from "./Rooms/RoomPage";
 import AdminPage from "./Admin/AdminPage";
 import AdminCustomer from "./Admin/AdminCustomer";
 import AdminHotel from "./Admin/AdminHotel.js";
+import AdminBooking from "./Admin/AdminBooking";
 
 export {
   HomePage,
@@ -24,4 +25,5 @@ export {
   AdminPage,
   AdminCustomer,
   AdminHotel,
+  AdminBooking
 };

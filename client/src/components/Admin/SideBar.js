@@ -54,6 +54,13 @@ const SideBar = () => {
         </Link>
       </li>
 
+      <li className="nav-item">
+        <Link className="nav-link" to="/admin/booking">
+          <i className="fas fa-fw fa-building"></i>
+          <span>Bookings</span>
+        </Link>
+      </li>
+
       <hr className="sidebar-divider" />
 
       <hr className="sidebar-divider d-none d-md-block" />

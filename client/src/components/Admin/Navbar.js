@@ -54,58 +54,7 @@ const Navbar = () => {
         <i className="fa fa-bars"></i>
       </button>
 
-      <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-        <div className="input-group">
-          <input
-            type="text"
-            className="form-control bg-light border-0 small"
-            placeholder="Search for..."
-            aria-label="Search"
-            aria-describedby="basic-addon2"
-          />
-          <div className="input-group-append">
-            <button className="btn btn-primary" type="button">
-              <i className="fas fa-search fa-sm"></i>
-            </button>
-          </div>
-        </div>
-      </form>
-
       <ul className="navbar-nav ml-auto">
-        <li className="nav-item dropdown no-arrow d-sm-none">
-          <Link
-            className="nav-link dropdown-toggle"
-            to="#"
-            id="searchDropdown"
-            role="button"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            <i className="fas fa-search fa-fw"></i>
-          </Link>
-          <div
-            className="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-            aria-labelledby="searchDropdown"
-          >
-            <form className="form-inline mr-auto w-100 navbar-search">
-              <div className="input-group">
-                <input
-                  type="text"
-                  className="form-control bg-light border-0 small"
-                  placeholder="Search for..."
-                  aria-label="Search"
-                  aria-describedby="basic-addon2"
-                />
-                <div className="input-group-append">
-                  <button className="btn btn-primary" type="button">
-                    <i className="fas fa-search fa-sm"></i>
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </li>
 
         <div className="topbar-divider d-none d-sm-block"></div>
 
@@ -132,14 +81,14 @@ const Navbar = () => {
               <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
               Profile
             </Link>
-            <Link className="dropdown-item" to="#">
+            {/* <Link className="dropdown-item" to="#">
               <i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
               Settings
             </Link>
             <Link className="dropdown-item" to="#">
               <i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
               Activity Log
-            </Link>
+            </Link> */}
             <div className="dropdown-divider"></div>
             <Link
               className="dropdown-item"

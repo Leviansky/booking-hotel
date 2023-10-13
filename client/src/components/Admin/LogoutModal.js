@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const Logout = () => {
+const LogoutModal = () => {
   const navigate = useNavigate();
   const logoutHandler = () => {
     localStorage.clear();
@@ -55,4 +55,4 @@ const Logout = () => {
   );
 };
 
-export default Logout;
+export default LogoutModal;

@@ -9,6 +9,7 @@ import HotelCard from "./HotelCard";
 import AdminNavbar from "./Admin/Navbar";
 import SideBar from "./Admin/SideBar";
 import LogoutModal from "./Admin/LogoutModal";
+import AddHotelModal from "./Admin/AddHotelModal";
 import AdminFooter from "./Admin/Footer"
 
 export {
@@ -21,5 +22,6 @@ export {
   SideBar,
   AdminFooter,
   LogoutModal,
+  AddHotelModal,
   MainContent,
 };

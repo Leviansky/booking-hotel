@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from 'react'
 import "./Admin.css";
-// import { Link, useNavigate } from "react-router-dom";
 import {
   AdminFooter,
   AdminNavbar,
@@ -8,7 +7,7 @@ import {
   SideBar,
 } from "../../components";
 
-const Customers = () => {
+const AdminBooking = () => {
   return (
     <div className="admin">
       <div id="wrapper">
@@ -19,14 +18,16 @@ const Customers = () => {
             <AdminNavbar />
 
             <div class="container-fluid">
-              <h1 class="h3 mb-2 text-gray-800 text-center">Customers Controller</h1>
+              <h1 class="h3 mb-2 text-gray-800 text-center">
+                Bookings Controller
+              </h1>
 
               <div class="card shadow mb-4">
                 <div className="card-header p-3">
                   <div className="row">
                     <div className="col">
                       <h4 className="m-0 font-weight-bold text-primary">
-                        Data Customer
+                        Data Booking
                       </h4>
                     </div>
                     <div className="col text-end">
@@ -45,11 +46,12 @@ const Customers = () => {
                       <thead>
                         <tr>
                           <th>No</th>
-                          <th>Name</th>
-                          <th>Username</th>
-                          <th>Email</th>
-                          <th>Address</th>
-                          <th>Phone</th>
+                          <th>Customer</th>
+                          <th>Hotel</th>
+                          <th>Room</th>
+                          <th>Check In</th>
+                          <th>Check Out</th>
+                          <th>Status</th>
                           <th>Actions</th>
                         </tr>
                       </thead>
@@ -60,6 +62,7 @@ const Customers = () => {
                           <td>Edinburgh</td>
                           <td>61</td>
                           <td>2011/04/25</td>
+                          <td>sss</td>
                           <td>sss</td>
                           <td>
                             <button className="btn btn-warning">Update</button>
@@ -81,6 +84,6 @@ const Customers = () => {
       <LogoutModal />
     </div>
   );
-};
+}
 
-export default Customers;
+export default AdminBooking
