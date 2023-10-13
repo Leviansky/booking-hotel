@@ -10,8 +10,21 @@ import {
   SideBar,
   UpdateHotelModal,
 } from "../../components";
+import { getAllHotels } from "../../axios/authAxios";
 
 const HotelAdmin = () => {
+  const [hotels, setHotels] = useState([])
+
+  const getData = async () => {
+    let access_token = localStorage.getItem("access_token")
+    let hotels = await getAllHotels(access_token)
+    setHotels(hotels)
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
+
   return (
     <div className="admin">
       <div id="wrapper">
@@ -78,22 +91,7 @@ const HotelAdmin = () => {
                               </div>
                               <div className="col-8">
                                 <h6>Nama Hotel</h6>
-                                <span>
-                                  <button
-                                    className="btn btn-primary"
-                                    data-toggle="modal"
-                                    data-target="#addRoomModal"
-                                  >
-                                    Add Room
-                                  </button>
-                                  <button
-                                    className="btn btn-warning"
-                                    data-toggle="modal"
-                                    data-target="#addRoomModal"
-                                  >
-                                    Update Room
-                                  </button>
-                                </span>
+                                <span>hdhdh</span>
                               </div>
                             </div>
                           </td>
@@ -101,13 +99,7 @@ const HotelAdmin = () => {
                           <td>61</td>
                           <td>2011/04/25</td>
                           <td>
-                            <button
-                              className="btn btn-warning"
-                              data-toggle="modal"
-                              data-target="#updateHotelModal"
-                            >
-                              Update
-                            </button>
+                            <button className="btn btn-warning">Update</button>
                             <button className="btn btn-danger">Delete</button>
                           </td>
                         </tr>

@@ -7,8 +7,35 @@ import {
   LogoutModal,
   SideBar,
 } from "../../components";
+import axios  from "axios";
+import { getAllBookings, getAllHotels, getAllUsers } from "../../axios/authAxios";
 
 const AdminPage = () => {
+  const [hotels, setHotels] = useState([])
+  const [rooms, setRooms] = useState([])
+  const [totalRoom, setTotalRoom] = useState(0)
+  const [customers, setCustomers] = useState([])
+  const [bookings, setBookings] = useState([])
+
+  const getAllDatas = async() => {
+    let access_token = localStorage.getItem("access_token")
+    let hotels = await getAllHotels(access_token)
+    setHotels(hotels)
+    let customers = await getAllUsers(access_token)
+    setCustomers(customers)
+    let bookings = await getAllBookings(access_token)
+    setBookings(bookings)
+    let total = 0
+    await hotels.forEach(hotel => {
+      total+=hotel.total_room
+    })
+    setTotalRoom(total)
+  }
+
+  useEffect(() => {
+    getAllDatas()
+  }, [])
+
   return (
     <div className="admin">
       <div id="wrapper">
@@ -33,7 +60,7 @@ const AdminPage = () => {
                             Total Hotel
                           </div>
                           <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            10
+                            {hotels.length}
                           </div>
                         </div>
                         <div class="col-auto">
@@ -53,7 +80,7 @@ const AdminPage = () => {
                             Total Room
                           </div>
                           <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            10
+                            {totalRoom}
                           </div>
                         </div>
                         <div class="col-auto">
@@ -73,7 +100,7 @@ const AdminPage = () => {
                             Total Customer
                           </div>
                           <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            10
+                            {customers.length - 1}
                           </div>
                           <div class="row no-gutters align-items-center"></div>
                         </div>
@@ -94,7 +121,7 @@ const AdminPage = () => {
                             Total Booking
                           </div>
                           <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            10
+                            {bookings.length}
                           </div>
                         </div>
                         <div class="col-auto">

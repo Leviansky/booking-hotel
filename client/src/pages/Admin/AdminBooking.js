@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import "./Admin.css";
 import {
   AdminFooter,
@@ -6,8 +6,21 @@ import {
   LogoutModal,
   SideBar,
 } from "../../components";
+import { getAllBookings } from '../../axios/authAxios';
 
 const AdminBooking = () => {
+  const [bookings, setBookings] = useState([])
+
+  const getData = async () => {
+    let access_token = localStorage.getItem("access_token")
+    let bookings = await getAllBookings(access_token)
+    console.log(bookings)
+    setBookings(bookings)
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
   return (
     <div className="admin">
       <div id="wrapper">
@@ -53,18 +66,24 @@ const AdminBooking = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
-                          <td>2011/04/25</td>
-                          <td>sss</td>
-                          <td>sss</td>
-                          <td>
-                            <button className="btn btn-primary">Approve</button>
-                          </td>
-                        </tr>
+                        {
+                          bookings.map((booking, index) => {
+                            const {Customer, Hotel, Room, dataCheckin, dataCheckout, status} = booking
+                            return <tr>
+                            <td>{index+1}</td>
+                            <td>{Customer.name}</td>
+                            <td>{Hotel.name}</td>
+                            <td>{Room ? Room.name : 0}</td>
+                            <td>{dataCheckin}</td>
+                            <td>{dataCheckout}</td>
+                            <td>{status}</td>
+                            <td>
+                              <button className="btn btn-warning">Update</button>
+                              <button className="btn btn-danger">Delete</button>
+                            </td>
+                          </tr>
+                          })
+                        }
                       </tbody>
                     </table>
                   </div>
