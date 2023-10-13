@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import {
   HomePage,
@@ -8,8 +8,8 @@ import {
   AdminPage,
   RegisterPage,
   AboutPage,
-  Customers,
-  HotelAdmin
+  AdminHotel,
+  AdminCustomer
 } from "../pages";
 
 const MainContent = () => {
@@ -23,8 +23,8 @@ const MainContent = () => {
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
         <Route path="/admin" element={<AdminPage />}></Route>
-        <Route path="/admin/hotel" element={<HotelAdmin />}></Route>
-        <Route path="/admin/customer" element={<Customers />}></Route>
+        <Route path="/admin/hotel" element={<AdminHotel />}></Route>
+        <Route path="/admin/customer" element={<AdminCustomer />}></Route>
       </Routes>
     </>
   );
