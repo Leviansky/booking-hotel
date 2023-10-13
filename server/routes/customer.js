@@ -4,7 +4,7 @@ const { authAdmin, authUser } = require('../middleware/authentication')
 
 //ALL USER
 customerRoute.post('/register', CustomerController.register);
-customerRoute.get('/login', CustomerController.login);
+customerRoute.post('/login', CustomerController.login);
 customerRoute.put('/edit', authUser, CustomerController.edit)
 
 //ADMIN

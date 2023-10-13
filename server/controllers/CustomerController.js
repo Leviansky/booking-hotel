@@ -134,7 +134,8 @@ class CustomerController {
                 avatar: founded.avatar,
                 address: founded.address,
                 phone: founded.phone,
-                access_token: access_token
+                role: founded.role,
+                access_token: access_token,
             }
 
             //SEND RESULT SUCCESS
