@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Admin.css";
 import { Link, useNavigate } from "react-router-dom";
 import {
+  AddHotelModal,
   AdminFooter,
   AdminNavbar,
   LogoutModal,
@@ -31,16 +32,7 @@ const HotelAdmin = () => {
                         Data Hotel
                       </h4>
                     </div>
-                    <Link
-                      className="btn btn-primary"
-                      to="#"
-                      data-toggle="modal"
-                      data-target="#logoutModal"
-                      // onClick={() => logoutHandler()}
-                    >
-                      Add Data
-                    </Link>
-                    {/* <div className="col text-end">
+                    <div className="col text-end">
                       <button
                         className="btn btn-primary"
                         data-toggle="modal"
@@ -48,7 +40,7 @@ const HotelAdmin = () => {
                       >
                         Add Data
                       </button>
-                    </div> */}
+                    </div>
                   </div>
                 </div>
                 <div className="card-body">
@@ -84,6 +76,7 @@ const HotelAdmin = () => {
                               </div>
                               <div className="col-8">
                                 <h6>Nama Hotel</h6>
+                                <span>hdhdh</span>
                               </div>
                             </div>
                           </td>
@@ -107,6 +100,7 @@ const HotelAdmin = () => {
         </div>
       </div>
 
+      <AddHotelModal />
       <LogoutModal />
     </div>
   );

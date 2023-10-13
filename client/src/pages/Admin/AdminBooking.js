@@ -1,6 +1,7 @@
 import React from 'react'
 import "./Admin.css";
 import {
+  AddBookingModal,
   AdminFooter,
   AdminNavbar,
   LogoutModal,
@@ -29,9 +30,6 @@ const AdminBooking = () => {
                       <h4 className="m-0 font-weight-bold text-primary">
                         Data Booking
                       </h4>
-                    </div>
-                    <div className="col text-end">
-                      <button className="btn btn-primary">Add Data</button>
                     </div>
                   </div>
                 </div>
@@ -65,8 +63,7 @@ const AdminBooking = () => {
                           <td>sss</td>
                           <td>sss</td>
                           <td>
-                            <button className="btn btn-warning">Update</button>
-                            <button className="btn btn-danger">Delete</button>
+                            <button className="btn btn-primary">Payment</button>
                           </td>
                         </tr>
                       </tbody>
@@ -81,6 +78,7 @@ const AdminBooking = () => {
         </div>
       </div>
 
+      <AddBookingModal />
       <LogoutModal />
     </div>
   );
