@@ -4,6 +4,7 @@ import "./Admin.css";
 import {
   AdminFooter,
   AdminNavbar,
+  DeleteModal,
   LogoutModal,
   SideBar,
   UpdateCustomerModal,
@@ -84,7 +85,11 @@ const Customers = () => {
                                   >
                                     Update
                                   </button>
-                                  <button className="btn btn-danger">
+                                  <button
+                                    className="btn btn-danger"
+                                    data-toggle="modal"
+                                    data-target="#deleteModal"
+                                  >
                                     Delete
                                   </button>
                                 </td>
@@ -105,6 +110,7 @@ const Customers = () => {
       </div>
 
       <UpdateCustomerModal />
+      <DeleteModal />
       <LogoutModal />
     </div>
   );

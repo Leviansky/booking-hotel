@@ -4,6 +4,7 @@ import {
   AdminFooter,
   AdminNavbar,
   ApprovePaymentModal,
+  CheckoutModal,
   LogoutModal,
   SideBar,
 } from "../../components";
@@ -87,7 +88,11 @@ const AdminBooking = () => {
                                   >
                                     Approve
                                   </button>
-                                  <button className="btn btn-danger">
+                                  <button
+                                    className="btn btn-danger"
+                                    data-toggle="modal"
+                                    data-target="#checkoutModal"
+                                  >
                                     Check Out
                                   </button>
                                 </td>
@@ -108,6 +113,7 @@ const AdminBooking = () => {
       </div>
 
       <ApprovePaymentModal />
+      <CheckoutModal />
       <LogoutModal />
     </div>
   );

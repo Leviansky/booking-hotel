@@ -6,6 +6,7 @@ import {
   AddRoomModal,
   AdminFooter,
   AdminNavbar,
+  DeleteModal,
   LogoutModal,
   SideBar,
   UpdateHotelModal,
@@ -109,7 +110,13 @@ const HotelAdmin = () => {
                             >
                               Update
                             </button>
-                            <button className="btn btn-danger">Delete</button>
+                            <button
+                              className="btn btn-danger"
+                              data-toggle="modal"
+                              data-target="#deleteModal"
+                            >
+                              Delete
+                            </button>
                           </td>
                         </tr>
                       </tbody>
@@ -128,6 +135,7 @@ const HotelAdmin = () => {
       <AddRoomModal />
       <UpdateHotelModal />
       <UpdateRoomModal />
+      <DeleteModal />
       <LogoutModal />
     </div>
   );
