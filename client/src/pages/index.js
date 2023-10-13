@@ -12,6 +12,7 @@ import RoomPage from "./Rooms/RoomPage";
 // Admin
 import AdminPage from "./Admin/AdminPage";
 import Customers from "./Admin/Customers";
+import HotelAdmin from "./Admin/HotelAdmin";
 
 export {
   HomePage,
@@ -21,5 +22,6 @@ export {
   HotelPage,
   RoomPage,
   AdminPage,
-  Customers
+  Customers,
+  HotelAdmin,
 };

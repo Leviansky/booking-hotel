@@ -16,6 +16,12 @@ const LoginPage = () => {
       let result = await login({username, password})
       if(result !== undefined) {
         localStorage.setItem("access_token", result.access_token)
+        localStorage.setItem("username", result.username)
+        localStorage.setItem("name", result.name)
+        localStorage.setItem("email", result.email)
+        localStorage.setItem("avatar", result.avatar)
+        localStorage.setItem("address", result.address)
+        localStorage.setItem("phone", result.phone)
         if(result.role === 'admin'){navigate("/admin")}
         // if(result.role === 'user'){}
       }

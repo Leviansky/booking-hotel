@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./Admin.css";
 import { Link, useNavigate } from "react-router-dom";
 
-const AdminPage = () => {
-  const [name, setName] = useState('')
-  const [avatar, setAvatar] = useState('')
+const HotelAdmin = () => {
+    const [name, setName] = useState('')
+    const [avatar, setAvatar] = useState('')
   const [style, setStyle] = useState(
     "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
   );
@@ -226,7 +226,7 @@ const AdminPage = () => {
               </ul>
             </nav>
 
-            <div>INI DASHBOARD</div>
+            <div>INI HALAMAN HOTEL</div>
 
             
           </div>
@@ -292,7 +292,7 @@ const AdminPage = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AdminPage;
+export default HotelAdmin

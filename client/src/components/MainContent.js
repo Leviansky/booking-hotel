@@ -5,10 +5,11 @@ import {
   HotelPage,
   RoomPage,
   LoginPage,
+  AdminPage,
   RegisterPage,
   AboutPage,
-  AdminPage,
   Customers,
+  HotelAdmin
 } from "../pages";
 
 const MainContent = () => {
@@ -22,7 +23,8 @@ const MainContent = () => {
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
         <Route path="/admin" element={<AdminPage />}></Route>
-        <Route path="/admins" element={<Customers/>}></Route>
+        <Route path="/admin/hotel" element={<HotelAdmin />}></Route>
+        <Route path="/admin/customer" element={<Customers />}></Route>
       </Routes>
     </>
   );
