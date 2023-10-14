@@ -55,7 +55,7 @@ const getAllHotels = async () => {
       method: 'GET',
       url: URL + '/hotels/all',
       headers: {
-        access_token: access_token 
+        access_token: localStorage.getItem("access_token") 
       }
     })
     return result.data
@@ -83,7 +83,7 @@ const getAllUsers = async () => {
       method: 'GET',
       url: URL + '/customers',
       headers: {
-        access_token: access_token 
+        access_token: localStorage.getItem("access_token") 
       }
     })
     return result.data
@@ -98,7 +98,7 @@ const getAllBookings = async () => {
       method: 'GET',
       url: URL + '/booking/list-all',
       headers: {
-        access_token: access_token
+        access_token: localStorage.getItem("access_token")
       }
     })
     return result.data
@@ -114,7 +114,7 @@ const editUser = async (id, data) => {
       url: URL + '/customers/' + id,
       data: data,
       headers: {
-        access_token: access_token
+        access_token: localStorage.getItem("access_token")
       }
     })
     getAllUsers()
@@ -130,10 +130,42 @@ const deleteUser = async (id) => {
       method: 'DELETE',
       url: URL + '/customers/' + id,
       headers: {
-        access_token: access_token
+        access_token: localStorage.getItem("access_token")
       }
     })
     getAllUsers()
+    return result.data
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
+const approvePayment = async (id) => {
+  try {
+    let result = await axios({
+      method: 'POST',
+      url: URL + '/booking/' + id + '/payment',
+      headers: {
+        access_token: localStorage.getItem("access_token")
+      }
+    })
+    getAllBookings()
+    return result.data
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
+const checkout = async (id) => {
+  try {
+    let result = await axios({
+      method: 'DELETE',
+      url: URL + '/booking/' + id,
+      headers: {
+        access_token: localStorage.getItem("access_token")
+      }
+    })
+    getAllBookings()
     return result.data
   } catch (error) {
     console.log(error.message)
@@ -147,5 +179,7 @@ export {
   getAllHotels, 
   getAllBookings, 
   editUser,
-  deleteUser
+  deleteUser,
+  approvePayment,
+  checkout
 };

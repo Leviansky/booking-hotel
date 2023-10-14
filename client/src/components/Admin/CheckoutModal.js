@@ -1,6 +1,12 @@
 import React from 'react'
+import { getAllBookings, checkout } from '../../axios/authAxios'
 
-const CheckoutModal = () => {
+const CheckoutModal = ({booking}) => {
+  const checkoutHandler = async() => {
+    let result = await checkout(booking[0].id)
+    console.log(result)
+    await getAllBookings()
+  }
   return (
     <div
       className="modal fade"
@@ -34,7 +40,12 @@ const CheckoutModal = () => {
             >
               Cancel
             </button>
-            <button className="btn btn-danger" type="button">
+            <button 
+              className="btn btn-danger" 
+              type="button" 
+              data-dismiss="modal"
+              onClick={() => checkoutHandler()}
+            >
               Yes
             </button>
           </div>

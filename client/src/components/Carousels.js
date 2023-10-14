@@ -28,7 +28,7 @@ const Carousels = ({name}) => {
                 </>
               : <>
                   <h5>Welcome</h5>
-                  <h1>{name}</h1>
+                  <h1>{name.toUpperCase()}</h1>
                 </>
             }
           </div>
@@ -43,7 +43,7 @@ const Carousels = ({name}) => {
                 </>
               : <>
                   <h5>Welcome</h5>
-                  <h1>{name}</h1>
+                  <h1>{name.toUpperCase()}</h1>
                 </>
             }
           </div>
@@ -58,7 +58,7 @@ const Carousels = ({name}) => {
                 </>
               : <>
                   <h5>Welcome</h5>
-                  <h1>{name}</h1>
+                  <h1>{name.toUpperCase()}</h1>
                 </>
             }
           </div>

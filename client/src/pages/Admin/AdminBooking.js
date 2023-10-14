@@ -12,15 +12,20 @@ import { getAllBookings } from '../../axios/authAxios';
 
 const AdminBooking = () => {
   const [bookings, setBookings] = useState([])
+  const [selectedBooking, setSelectedBooking] = useState({})
 
   const getData = async () => {
     let bookings = await getAllBookings()
     setBookings(bookings)
   }
 
+  const eventHandler = (bookings) => {
+    setSelectedBooking(bookings)
+  }
+
   useEffect(() => {
     getData()
-  }, [])
+  }, [bookings])
   return (
     <div className="admin">
       <div id="wrapper">
@@ -68,31 +73,38 @@ const AdminBooking = () => {
                       <tbody>
                         {
                           bookings.map((booking, index) => {
-                            const {Customer, Hotel, Room, dataCheckin, dataCheckout, status} = booking
+                            const {id, Customer, Hotel, Room, dataCheckin, dataCheckout, status} = booking
                             return (
                               <tr>
                                 <td>{index + 1}</td>
                                 <td>{Customer.name}</td>
                                 <td>{Hotel.name}</td>
-                                <td>{Room ? Room.roomNumbers : 0}</td>
+                                <td>{Room ? Room.roomNumbers : 0}, {Room ? Room.status : 'error'}</td>
                                 <td>{dataCheckin}</td>
                                 <td>{dataCheckout}</td>
                                 <td>{status}</td>
                                 <td>
-                                  <button
-                                    className="btn btn-success"
-                                    data-toggle="modal"
-                                    data-target="#approvePaymentModal"
-                                  >
-                                    Approve
-                                  </button>
-                                  <button
-                                    className="btn btn-danger"
-                                    data-toggle="modal"
-                                    data-target="#checkoutModal"
-                                  >
-                                    Check Out
-                                  </button>
+                                  {
+                                    status === 'unpaid'
+                                    ? <button
+                                        className="btn btn-success"
+                                        data-toggle="modal"
+                                        data-target="#approvePaymentModal"
+                                        onClick={() => eventHandler(id)}
+                                      >
+                                        Approve
+                                      </button>
+                                    : Room.status === 'occupied'
+                                      ? <button
+                                        className="btn btn-danger"
+                                        data-toggle="modal"
+                                        data-target="#checkoutModal"
+                                        onClick={() => eventHandler(id)}
+                                        >
+                                          Check Out
+                                        </button>
+                                      : <></>
+                                  }
                                 </td>
                               </tr>
                             );
@@ -110,8 +122,8 @@ const AdminBooking = () => {
         </div>
       </div>
 
-      <ApprovePaymentModal />
-      <CheckoutModal />
+      <ApprovePaymentModal booking={bookings}/>
+      <CheckoutModal booking={bookings}/>
       <LogoutModal />
     </div>
   );

@@ -1,6 +1,11 @@
 import React from 'react'
+import { getAllBookings, approvePayment } from '../../axios/authAxios'
 
-const ApprovePaymentModal = () => {
+const ApprovePaymentModal = ({booking}) => {
+  const approveHandler = async() => {
+    let result = await approvePayment(booking[0].id)
+    await getAllBookings()
+  }
   return (
     <div
       className="modal fade"
@@ -37,6 +42,8 @@ const ApprovePaymentModal = () => {
             <button
               className="btn btn-primary"
               type="button"
+              data-dismiss="modal"
+              onClick={() => approveHandler()}
             >
               Yes
             </button>
