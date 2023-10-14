@@ -30,7 +30,7 @@ const HotelCard = () => {
               </p>
             </div>
             <div className="card-footer">
-              <Link to="/rooms" className="btn btn-card btn-primary">
+              <Link to="/hotel-detail" className="btn btn-card btn-primary">
                 See
               </Link>
             </div>
@@ -62,7 +62,7 @@ const HotelCard = () => {
               </p>
             </div>
             <div className="card-footer">
-              <Link to="/rooms" className="btn btn-card btn-primary">
+              <Link to="/hotel-detail" className="btn btn-card btn-primary">
                 See
               </Link>
             </div>

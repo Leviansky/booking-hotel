@@ -10,7 +10,7 @@ import {
   AboutPage,
   AdminHotel,
   AdminCustomer,
-  AdminBooking
+  AdminBooking,
 } from "../pages";
 import CustomerPage from "../pages/Customer/CustomerPage";
 
@@ -19,16 +19,17 @@ const MainContent = () => {
     <>
       <Routes>
         <Route path="" element={<HomePage />}></Route>
-        <Route path="/about" element={<AboutPage />}></Route>
-        <Route path="/hotels" element={<HotelPage />}></Route>
-        <Route path="/rooms" element={<RoomPage />}></Route>
-        <Route path="/login" element={<LoginPage />}></Route>
-        <Route path="/register" element={<RegisterPage />}></Route>
-        <Route path="/admin" element={<AdminPage />}></Route>
-        <Route path="/admin/hotel" element={<AdminHotel />}></Route>
-        <Route path="/admin/customer" element={<AdminCustomer />}></Route>
-        <Route path="/admin/booking" element={<AdminBooking />}></Route>
-        <Route path="/customer" element={<CustomerPage />}></Route>
+        <Route path="about" element={<AboutPage />}></Route>
+        <Route path="hotels" element={<HotelPage />}></Route>
+        <Route path="login" element={<LoginPage />}></Route>
+        <Route path="register" element={<RegisterPage />}></Route>
+        <Route path="admin" element={<AdminPage />}>
+          <Route path="hotel" element={<AdminHotel />}></Route>
+          <Route path="customer" element={<AdminCustomer />}></Route>
+          <Route path="booking" element={<AdminBooking />}></Route>
+        </Route>
+        <Route path="customer" element={<CustomerPage />}></Route>
+        <Route path="hotel-detail" element={<RoomPage />}></Route>
       </Routes>
     </>
   );
