@@ -58,7 +58,7 @@ const AdminPage = () => {
                             Total Hotel
                           </div>
                           <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            {hotels.length}
+                            {hotels.length ? hotels.length : 0}
                           </div>
                         </div>
                         <div class="col-auto">
@@ -98,7 +98,7 @@ const AdminPage = () => {
                             Total Customer
                           </div>
                           <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            {customers.length - 1}
+                            {customers.length ? customers.length - 1 : 0}
                           </div>
                           <div class="row no-gutters align-items-center"></div>
                         </div>
@@ -119,7 +119,7 @@ const AdminPage = () => {
                             Total Booking
                           </div>
                           <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            {bookings.length}
+                            {bookings.length ? bookings.length : 0}
                           </div>
                         </div>
                         <div class="col-auto">

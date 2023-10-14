@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Footer, Navbar, TestimonialSlider } from "../../components";
 import "./Content.css";
 import About1 from "../../images/img-about.jpg";
 
 const AboutPage = () => {
+  console.log(localStorage.getItem("access_token"))
   return (
     <>
-      <Navbar />
+      {
+        localStorage.getItem("access_token") === null
+        ? <Navbar isLogin={false}/>
+        : <Navbar isLogin={true}/>
+      }
       <div className="about">
         <div className="row p-3">
           <div className="col info-left text-center">

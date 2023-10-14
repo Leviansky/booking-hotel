@@ -15,7 +15,7 @@ const LoginPage = () => {
   const loginHandler = async () => {
     try {
       let result = await login({ username, password });
-      // console.log(result)
+      console.log(result)
       if (result !== undefined) {
         localStorage.setItem("access_token", result.access_token);
         localStorage.setItem("username", result.username);
@@ -24,10 +24,13 @@ const LoginPage = () => {
         localStorage.setItem("avatar", result.avatar);
         localStorage.setItem("address", result.address);
         localStorage.setItem("phone", result.phone);
+        localStorage.setItem("role", result.role);
         if (result.role === "admin") {
           navigate("/admin");
         }
-        // if(result.role === 'user'){}
+        if(result.role === 'user'){
+          navigate("/customer");
+        }
       } 
     } catch (error) {
       console.log(error.message);

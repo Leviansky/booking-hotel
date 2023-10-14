@@ -4,7 +4,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../app/App.css";
 
-const Carousels = () => {
+const Carousels = ({name}) => {
+  console.log(name)
   const settings = {
     fade: true,
     infinite: true,
@@ -19,20 +20,47 @@ const Carousels = () => {
       <Slider {...settings}>
         <div className="slider slider-1">
           <div className="slider-text">
-            <h5>Book Now</h5>
-            <h1>Choose Our Best Hotels</h1>
+            {
+              name === undefined
+              ? <>
+                  <h5>Book Now</h5>
+                  <h1>Choose Our Best Hotels</h1>
+                </>
+              : <>
+                  <h5>Welcome</h5>
+                  <h1>{name}</h1>
+                </>
+            }
           </div>
         </div>
         <div className="slider slider-2">
           <div className="slider-text">
-            <h5>Book Now</h5>
-            <h1>Choose Our Best Hotels</h1>
+          {
+              name === undefined
+              ? <>
+                  <h5>Book Now</h5>
+                  <h1>Choose Our Best Hotels</h1>
+                </>
+              : <>
+                  <h5>Welcome</h5>
+                  <h1>{name}</h1>
+                </>
+            }
           </div>
         </div>
         <div className="slider slider-3">
           <div className="slider-text">
-            <h5>Book Now</h5>
-            <h1>Choose Our Best Hotels</h1>
+            {
+              name === undefined
+              ? <>
+                  <h5>Book Now</h5>
+                  <h1>Choose Our Best Hotels</h1>
+                </>
+              : <>
+                  <h5>Welcome</h5>
+                  <h1>{name}</h1>
+                </>
+            }
           </div>
         </div>
       </Slider>

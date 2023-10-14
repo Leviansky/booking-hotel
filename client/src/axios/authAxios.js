@@ -15,9 +15,8 @@ const login = async (data) => {
   } catch (error) {
     Swal.fire({
       icon: "error",
-      title: "Oops...",
-      text: error.message,
-      footer: "You have entered an invalid username or password",
+      title: "Login Failed",
+      text: "You have entered an invalid username or password",
     });
   }
 }
@@ -29,15 +28,24 @@ const register = async (data) => {
       url: URL + '/customers/register',
       data: data
     });
-    Swal.fire("Register", "Register Succes", "success");
+    Swal.fire({
+      icon: "success",
+      title: "Register Success",
+      text: "You can login with new account!",
+    })
     return result.data
   } catch (error) {
-    Swal.fire({
+    error.response.data.message === undefined
+    ? Swal.fire({
+        icon: "error",
+        title: "Register Failed",
+        text: "Please enter the right email!",
+      })
+    : Swal.fire({
       icon: "error",
-      title: "Oops...",
-      text: error.message,
-      footer: "Please enter the right email!",
-    });
+      title: "Register Failed",
+      text: error.response.data.message,
+    })
   }
 }
 

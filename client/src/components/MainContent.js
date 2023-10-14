@@ -12,6 +12,7 @@ import {
   AdminCustomer,
   AdminBooking
 } from "../pages";
+import CustomerPage from "../pages/Customer/CustomerPage";
 
 const MainContent = () => {
   return (
@@ -27,6 +28,7 @@ const MainContent = () => {
         <Route path="/admin/hotel" element={<AdminHotel />}></Route>
         <Route path="/admin/customer" element={<AdminCustomer />}></Route>
         <Route path="/admin/booking" element={<AdminBooking />}></Route>
+        <Route path="/customer" element={<CustomerPage />}></Route>
       </Routes>
     </>
   );

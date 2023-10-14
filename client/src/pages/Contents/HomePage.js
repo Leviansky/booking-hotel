@@ -4,10 +4,12 @@ import { Link, useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   const [isLogin, setIsLogin] = useState(false)
+  const [role, setRole] = useState('');
   const navigate = useNavigate();
   useEffect(() => {
     if(localStorage.getItem('access_token')) {
       setIsLogin(true)
+      setRole(localStorage.getItem('role'))
     } else {
       setIsLogin(false)
     }
@@ -16,8 +18,10 @@ const HomePage = () => {
     <>
       {
         !isLogin
-        ? <><Navbar /><Carousels /><Footer /></>
-        : navigate('/admin')
+        ? <><Navbar isLogin={isLogin}/><Carousels /><Footer /></>
+        : role === 'admin'
+          ? navigate('/admin')
+          : navigate('/customer')
       }
     </>
   );

@@ -9,6 +9,9 @@ import HotelPage from "./Hotels/HotelPage";
 // Rooms
 import RoomPage from "./Rooms/RoomPage";
 
+// Customer
+import CustomerPage from "./Customer/CustomerPage";
+
 // Admin
 import AdminPage from "./Admin/AdminPage";
 import AdminCustomer from "./Admin/AdminCustomer";
