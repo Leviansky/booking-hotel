@@ -16,15 +16,21 @@ import { getAllHotels } from "../../axios/authAxios";
 
 const HotelAdmin = () => {
   const [hotels, setHotels] = useState([])
+  const [selectedHotel, setSelectedHotel] = useState({})
 
   const getData = async () => {
     let hotels = await getAllHotels()
+    console.log(hotels)
     setHotels(hotels)
+  }
+
+  const eventHandler = (id) => {
+    setSelectedHotel(id)
   }
 
   useEffect(() => {
     getData()
-  }, [])
+  }, [hotels])
 
   return (
     <div className="admin">
@@ -80,7 +86,7 @@ const HotelAdmin = () => {
                       <tbody>
                         {
                           hotels.map((hotel, index) => {
-                            const {id, name, image, address, total_room, description} = hotel
+                            const {id, name, image, address, total_room, description, Rooms} = hotel
                             return <tr>
                             <td>{index+1}</td>
                             <td>
@@ -94,19 +100,40 @@ const HotelAdmin = () => {
                                   />
                                 </div>
                                 <div className="col-8">
-                                  <h6>{name}</h6>
+                                  <h5>{name}</h5>
+                                  <span>
+                                    <ul class="list-group list-group-horizontal p-0 ">
+                                      {
+                                        Rooms.map(room => {
+                                          return room.status === 'available'
+                                          ? <li class="list-group-item p-0 ml-1">
+                                              <button type="button" class="btn btn-success" disabled>
+                                                {room.roomNumbers}
+                                              </button>
+                                            </li>
+                                          : <li class="list-group-item p-0 ml-1">
+                                              <button type="button" class="btn btn-secondary" disabled>
+                                                {room.roomNumbers}
+                                              </button>
+                                            </li>
+                                        })
+                                      }
+                                    </ul>
+                                  </span>
                                   <span>
                                     <button
-                                      className="btn btn-primary"
+                                      className="btn btn-primary mt-3"
                                       data-toggle="modal"
                                       data-target="#addRoomModal"
+                                      onClick={() => eventHandler(id)}
                                     >
                                       Add Room
                                     </button>
                                     <button
-                                      className="btn btn-warning"
+                                      className="btn btn-warning mt-3 ml-3"
                                       data-toggle="modal"
                                       data-target="#updateRoomModal"
+                                      onClick={() => eventHandler(id)}
                                     >
                                       Update Room
                                     </button>
@@ -122,6 +149,7 @@ const HotelAdmin = () => {
                                 className="btn btn-warning"
                                 data-toggle="modal"
                                 data-target="#updateHotelModal"
+                                onClick={() => eventHandler(id)}
                               >
                                 Update
                               </button>
@@ -129,6 +157,7 @@ const HotelAdmin = () => {
                                 className="btn btn-danger"
                                 data-toggle="modal"
                                 data-target="#deleteModal"
+                                onClick={() => eventHandler(id)}
                               >
                                 Delete
                               </button>
@@ -149,7 +178,7 @@ const HotelAdmin = () => {
       </div>
 
       <AddHotelModal />
-      <AddRoomModal />
+      <AddRoomModal hotel={selectedHotel}/>
       <UpdateHotelModal />
       <UpdateRoomModal />
       <DeleteModal />

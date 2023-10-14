@@ -1,6 +1,16 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { addRoom } from '../../axios/authAxios'
 
-const AddRoomModal = () => {
+const AddRoomModal = ({hotel}) => {
+  const [price, setPrice] = useState(0)
+
+  const addRoomHandler = async() => {
+    let result = await addRoom(hotel, {
+      price: price
+    })
+    console.log(result)
+  }
+
   return (
     <div
       className="modal fade"
@@ -31,7 +41,7 @@ const AddRoomModal = () => {
                 <label for="price" className="col-form-label">
                   Room Price
                 </label>
-                <input type="number" className="form-control" id="price" />
+                <input type="number" className="form-control" id="price" onChange={e => setPrice(e.target.value)}/>
               </div>
             </form>
           </div>
@@ -43,7 +53,12 @@ const AddRoomModal = () => {
             >
               Cancel
             </button>
-            <button type="button" className="btn btn-primary">
+            <button 
+              type="button" 
+              className="btn btn-primary"
+              onClick={() => addRoomHandler()} 
+              data-dismiss="modal"
+            >
               Save
             </button>
           </div>

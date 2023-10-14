@@ -172,6 +172,23 @@ const checkout = async (id) => {
   }
 }
 
+const addRoom = async (id, data) => {
+  try {
+    let result = await axios({
+      method: 'POST',
+      url: URL + '/hotels/' + id + '/rooms',
+      data: data,
+      headers: {
+        access_token: localStorage.getItem("access_token")
+      }
+    })
+    getAllHotels()
+    return result.data
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
 export { 
   login, 
   register, 
@@ -181,5 +198,6 @@ export {
   editUser,
   deleteUser,
   approvePayment,
-  checkout
+  checkout,
+  addRoom
 };
