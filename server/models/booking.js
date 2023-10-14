@@ -11,9 +11,18 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Booking.belongsTo(models.Customer)
-      Booking.belongsTo(models.Hotel)
-      Booking.belongsTo(models.Room)
+      Booking.belongsTo(models.Customer, {
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+      })
+      Booking.belongsTo(models.Hotel, {
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+      })
+      Booking.belongsTo(models.Room, {
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+      })
     }
   }
   Booking.init({

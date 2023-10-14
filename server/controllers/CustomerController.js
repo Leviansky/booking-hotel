@@ -1,4 +1,4 @@
-const { Customer } = require("../models");
+const { Customer, Booking  } = require("../models");
 const { EncryptPwd, DecryptPwd } = require('../helpers/bycrypt');
 const { encodeToken, decodeToken } = require('../helpers/jwt');
 
@@ -31,8 +31,12 @@ class CustomerController {
                 where: {id}
             })
 
+            await Booking.destroy({
+                where: {CustomerId: id}
+            })
+
             //SEND RESULT SUCCESS
-            result === 1
+            result === x
             ? res.status(200).json({message: "Delete Success"})
             : res.status(404).json({message: "User not found"})
         } catch (error) {
@@ -153,6 +157,37 @@ class CustomerController {
 
             //GET DATA FROM REQUEST BODY
             const {name, address, phone, avatar} = req.body;
+            
+            //UPDATE CUSTOMER WITH NEWEST DATA FROM ID
+            let result = await Customer.update({
+                id, username, password, email, name, address, phone, role
+            }, {
+                where: {id}
+            })
+            
+            //SEND RESULT
+            result[0] === 1
+            ? res.status(200).json({message: "User has been updated!"})
+            : res.status(400).json(result);
+        } catch (error) {
+            //SEND RESULT ERROR
+            res.status(500).json(error.message)
+        }
+    }
+
+    static async editFromAdmin(req,res) {
+        try {
+            // GET DATA REQUEST USER FROM MIDDLEWARE AUTH USER
+            const id = +req.params.userId;
+
+            let customer = await Customer.findOne({
+                where: {id}
+            })
+
+            const { username, password, email, role } = customer
+
+            //GET DATA FROM REQUEST BODY
+            const {name, address, phone } = req.body;
             
             //UPDATE CUSTOMER WITH NEWEST DATA FROM ID
             let result = await Customer.update({

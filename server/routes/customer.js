@@ -9,6 +9,7 @@ customerRoute.put('/edit', authUser, CustomerController.edit)
 
 //ADMIN
 customerRoute.get('/', authAdmin, CustomerController.getAllCustomer);
+customerRoute.put('/:userId', authAdmin, CustomerController.editFromAdmin)
 customerRoute.delete('/:UserId', authAdmin, CustomerController.deleteUser)
 
 module.exports = customerRoute;
