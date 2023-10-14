@@ -2,6 +2,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const URL = "http://localhost:3000/api";
+const access_token = localStorage.getItem("access_token")
 
 const login = async (data) => {
   try {
@@ -40,7 +41,7 @@ const register = async (data) => {
   }
 }
 
-const getAllHotels = async (access_token) => {
+const getAllHotels = async () => {
   try {
     let result = await axios({
       method: 'GET',
@@ -68,7 +69,7 @@ const getAllHotels = async (access_token) => {
 //   }
 // }
 
-const getAllUsers = async (access_token) => {
+const getAllUsers = async () => {
   try {
     let result = await axios({
       method: 'GET',
@@ -83,7 +84,7 @@ const getAllUsers = async (access_token) => {
   }
 }
 
-const getAllBookings = async (access_token) => {
+const getAllBookings = async () => {
   try {
     let result = await axios({
       method: 'GET',
@@ -98,4 +99,45 @@ const getAllBookings = async (access_token) => {
   }
 }
 
-export { login, register, getAllUsers, getAllHotels, getAllBookings };
+const editUser = async (id, data) => {
+  try {
+    let result = await axios({
+      method: 'PUT',
+      url: URL + '/customers/' + id,
+      data: data,
+      headers: {
+        access_token: access_token
+      }
+    })
+    getAllUsers()
+    return result.data
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
+const deleteUser = async (id) => {
+  try {
+    let result = await axios({
+      method: 'DELETE',
+      url: URL + '/customers/' + id,
+      headers: {
+        access_token: access_token
+      }
+    })
+    getAllUsers()
+    return result.data
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
+export { 
+  login, 
+  register, 
+  getAllUsers, 
+  getAllHotels, 
+  getAllBookings, 
+  editUser,
+  deleteUser
+};

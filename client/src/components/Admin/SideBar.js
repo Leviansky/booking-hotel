@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const SideBar = () => {
+const SideBar = ({inActive}) => {
   const [style, setStyle] = useState(
     "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
   );
@@ -29,37 +29,73 @@ const SideBar = () => {
 
       <hr className="sidebar-divider my-0" />
 
-      <li className="nav-item active">
-        <Link className="nav-link" to="/admin">
-          <i className="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span>
-        </Link>
-      </li>
+      {
+        inActive === "dashboard"
+        ? <li className="nav-item active">
+            <Link className="nav-link" to="/admin">
+              <i className="fas fa-fw fa-tachometer-alt"></i>
+              <span>Dashboard</span>
+            </Link>
+          </li>
+        : <li className="nav-item">
+            <Link className="nav-link" to="/admin">
+              <i className="fas fa-fw fa-tachometer-alt"></i>
+              <span>Dashboard</span>
+            </Link>
+          </li>
+      }
 
       <hr className="sidebar-divider" />
 
       <div className="sidebar-heading">Features</div>
 
-      <li className="nav-item">
-        <Link className="nav-link" to="/admin/customer">
-          <i className="fas fa-fw fa-user"></i>
-          <span>Customers</span>
-        </Link>
-      </li>
+      {
+        inActive === 'customer'
+        ? <li className="nav-item active">
+            <Link className="nav-link" to="/admin/customer">
+              <i className="fas fa-fw fa-user"></i>
+              <span>Customers</span>
+            </Link>
+          </li>
+        : <li className="nav-item">
+            <Link className="nav-link" to="/admin/customer">
+              <i className="fas fa-fw fa-user"></i>
+              <span>Customers</span>
+            </Link>
+          </li>
+      }
 
-      <li className="nav-item">
-        <Link className="nav-link" to="/admin/hotel">
-          <i className="fas fa-fw fa-building"></i>
-          <span>Hotels</span>
-        </Link>
-      </li>
+      {
+        inActive === "hotel" 
+        ? <li className="nav-item active">
+            <Link className="nav-link" to="/admin/hotel">
+              <i className="fas fa-fw fa-building"></i>
+              <span>Hotels</span>
+            </Link>
+          </li>
+        : <li className="nav-item">
+            <Link className="nav-link" to="/admin/hotel">
+              <i className="fas fa-fw fa-building"></i>
+              <span>Hotels</span>
+            </Link>
+          </li>
+      }
 
-      <li className="nav-item">
-        <Link className="nav-link" to="/admin/booking">
-          <i className="fas fa-fw fa-door-open"></i>
-          <span>Bookings</span>
-        </Link>
-      </li>
+      {
+        inActive === 'booking'
+        ? <li className="nav-item active">
+            <Link className="nav-link" to="/admin/booking">
+              <i className="fas fa-fw fa-door-open"></i>
+              <span>Bookings</span>
+            </Link>
+          </li>
+        : <li className="nav-item">
+            <Link className="nav-link" to="/admin/booking">
+              <i className="fas fa-fw fa-door-open"></i>
+              <span>Bookings</span>
+            </Link>
+          </li>
+      }
 
       <hr className="sidebar-divider" />
 

@@ -1,6 +1,11 @@
 import React from 'react'
+import {deleteUser} from '../../axios/authAxios'
 
-const DeleteModal = () => {
+const DeleteModal = ({customer}) => {
+  const deleteHandler = async () => {
+    let result = await deleteUser(customer.id)
+  }
+
   return (
     <div
       className="modal fade"
@@ -37,6 +42,8 @@ const DeleteModal = () => {
             <button
               className="btn btn-danger"
               type="button"
+              data-dismiss="modal"
+              onClick={() => deleteHandler()}
             >
               Yes
             </button>

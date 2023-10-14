@@ -12,12 +12,24 @@ import {
   UpdateHotelModal,
   UpdateRoomModal,
 } from "../../components";
+import { getAllHotels } from "../../axios/authAxios";
 
 const HotelAdmin = () => {
+  const [hotels, setHotels] = useState([])
+
+  const getData = async () => {
+    let hotels = await getAllHotels()
+    setHotels(hotels)
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
+
   return (
     <div className="admin">
       <div id="wrapper">
-        <SideBar />
+        <SideBar inActive={'hotel'} />
 
         <div id="content-wrapper" className="d-flex flex-column">
           <div id="content">
@@ -66,59 +78,64 @@ const HotelAdmin = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>
-                            <div className="row">
-                              <div className="col-4">
-                                <img
-                                  className="img-fluid rounded-circle"
-                                  src="https://via.placeholder.com/100"
-                                  alt=""
-                                  srcset=""
-                                />
+                        {
+                          hotels.map((hotel, index) => {
+                            const {id, name, image, address, total_room, description} = hotel
+                            return <tr>
+                            <td>{index+1}</td>
+                            <td>
+                              <div className="row">
+                                <div className="col-4">
+                                  <img
+                                    className="img-fluid rounded-circle"
+                                    src={image}
+                                    alt=""
+                                    srcset=""
+                                  />
+                                </div>
+                                <div className="col-8">
+                                  <h6>{name}</h6>
+                                  <span>
+                                    <button
+                                      className="btn btn-primary"
+                                      data-toggle="modal"
+                                      data-target="#addRoomModal"
+                                    >
+                                      Add Room
+                                    </button>
+                                    <button
+                                      className="btn btn-warning"
+                                      data-toggle="modal"
+                                      data-target="#updateRoomModal"
+                                    >
+                                      Update Room
+                                    </button>
+                                  </span>
+                                </div>
                               </div>
-                              <div className="col-8">
-                                <h6>Nama Hotel</h6>
-                                <span>
-                                  <button
-                                    className="btn btn-primary"
-                                    data-toggle="modal"
-                                    data-target="#addRoomModal"
-                                  >
-                                    Add Room
-                                  </button>
-                                  <button
-                                    className="btn btn-warning"
-                                    data-toggle="modal"
-                                    data-target="#updateRoomModal"
-                                  >
-                                    Update Room
-                                  </button>
-                                </span>
-                              </div>
-                            </div>
-                          </td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
-                          <td>2011/04/25</td>
-                          <td>
-                            <button
-                              className="btn btn-warning"
-                              data-toggle="modal"
-                              data-target="#updateHotelModal"
-                            >
-                              Update
-                            </button>
-                            <button
-                              className="btn btn-danger"
-                              data-toggle="modal"
-                              data-target="#deleteModal"
-                            >
-                              Delete
-                            </button>
-                          </td>
-                        </tr>
+                            </td>
+                            <td>{address}</td>
+                            <td>{total_room}</td>
+                            <td>{description}</td>
+                            <td>
+                              <button
+                                className="btn btn-warning"
+                                data-toggle="modal"
+                                data-target="#updateHotelModal"
+                              >
+                                Update
+                              </button>
+                              <button
+                                className="btn btn-danger"
+                                data-toggle="modal"
+                                data-target="#deleteModal"
+                              >
+                                Delete
+                              </button>
+                            </td>
+                          </tr>
+                          })
+                        }
                       </tbody>
                     </table>
                   </div>

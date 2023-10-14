@@ -13,21 +13,25 @@ import { getAllUsers } from "../../axios/authAxios";
 
 const Customers = () => {
   const [customer, setCustomers] = useState([])
+  const [selectedCustomer, setSelectedCustomer] = useState({})
 
   const getData = async () => {
-    let access_token = localStorage.getItem("access_token")
-    let customers = await getAllUsers(access_token)
+    let customers = await getAllUsers()
     setCustomers(customers)
+  }
+
+  const eventHandler = (customer) => {
+    setSelectedCustomer(customer)
   }
 
   useEffect(() => {
     getData()
-  }, [])
+  }, [customer])
 
   return (
     <div className="admin">
       <div id="wrapper">
-        <SideBar />
+        <SideBar inActive={'customer'}/>
 
         <div id="content-wrapper" className="d-flex flex-column">
           <div id="content">
@@ -75,13 +79,14 @@ const Customers = () => {
                                 <td>{name}</td>
                                 <td>{username}</td>
                                 <td>{email}</td>
-                                <td>{address}</td>
-                                <td>{phone}</td>
+                                <td>{address ? address : '-'}</td>
+                                <td>{phone ? phone : '-'}</td>
                                 <td>
                                   <button
                                     className="btn btn-warning"
                                     data-toggle="modal"
                                     data-target="#updateCustomerModal"
+                                    onClick={() => eventHandler(customer)}
                                   >
                                     Update
                                   </button>
@@ -89,6 +94,7 @@ const Customers = () => {
                                     className="btn btn-danger"
                                     data-toggle="modal"
                                     data-target="#deleteModal"
+                                    onClick={() => eventHandler(customer)}
                                   >
                                     Delete
                                   </button>
@@ -109,8 +115,8 @@ const Customers = () => {
         </div>
       </div>
 
-      <UpdateCustomerModal />
-      <DeleteModal />
+      <UpdateCustomerModal customer={selectedCustomer}/>
+      <DeleteModal customer={selectedCustomer}/>
       <LogoutModal />
     </div>
   );

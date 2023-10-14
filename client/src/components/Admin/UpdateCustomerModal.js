@@ -1,6 +1,31 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import {editUser, getAllUsers} from '../../axios/authAxios'
 
-const UpdateCustomerModal = () => {
+const UpdateCustomerModal = ({ customer }) => {
+  const [name, setName] = useState('');
+  const [address, setAddress] = useState('');
+  const [phone, setPhone] = useState('');
+
+  const updateHandler = async() => {
+    console.log(customer.id)
+    let result = await editUser(
+      customer.id,
+      {
+        "name": name,
+        "address": address,
+        "phone": phone
+      }
+    )
+    await getAllUsers()
+  }
+
+  useEffect(() => {
+    if (customer) {
+      setName(customer.name || '');
+      setAddress(customer.address || '');
+      setPhone(customer.phone || '');
+    }
+  }, [customer]);
   return (
     <div
       className="modal fade"
@@ -35,18 +60,8 @@ const UpdateCustomerModal = () => {
                   type="text"
                   className="form-control"
                   id="name"
-                  value="name"
-                />
-              </div>
-              <div className="form-group">
-                <label for="avatar" className="col-form-label">
-                  Avatar
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="avatar"
-                  value="avatar"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                 />
               </div>
               <div className="form-group">
@@ -57,7 +72,8 @@ const UpdateCustomerModal = () => {
                   type="text"
                   className="form-control"
                   id="address"
-                  value="address"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
                 />
               </div>
               <div className="form-group">
@@ -68,7 +84,8 @@ const UpdateCustomerModal = () => {
                   type="text"
                   className="form-control"
                   id="phone"
-                  value="phone"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
                 />
               </div>
             </form>
@@ -81,7 +98,11 @@ const UpdateCustomerModal = () => {
             >
               Cancel
             </button>
-            <button type="button" className="btn btn-primary">
+            <button 
+              type="button" 
+              className="btn btn-primary"
+              data-dismiss="modal"
+              onClick={() => updateHandler()}>
               Save
             </button>
           </div>

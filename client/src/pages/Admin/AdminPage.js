@@ -12,18 +12,16 @@ import { getAllBookings, getAllHotels, getAllUsers } from "../../axios/authAxios
 
 const AdminPage = () => {
   const [hotels, setHotels] = useState([])
-  const [rooms, setRooms] = useState([])
   const [totalRoom, setTotalRoom] = useState(0)
   const [customers, setCustomers] = useState([])
   const [bookings, setBookings] = useState([])
 
   const getAllDatas = async() => {
-    let access_token = localStorage.getItem("access_token")
-    let hotels = await getAllHotels(access_token)
+    let hotels = await getAllHotels()
     setHotels(hotels)
-    let customers = await getAllUsers(access_token)
+    let customers = await getAllUsers()
     setCustomers(customers)
-    let bookings = await getAllBookings(access_token)
+    let bookings = await getAllBookings()
     setBookings(bookings)
     let total = 0
     await hotels.forEach(hotel => {
@@ -39,7 +37,7 @@ const AdminPage = () => {
   return (
     <div className="admin">
       <div id="wrapper">
-        <SideBar />
+        <SideBar inActive={'dashboard'}/>
 
         <div id="content-wrapper" className="d-flex flex-column">
           <div id="content">

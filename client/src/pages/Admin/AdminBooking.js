@@ -14,9 +14,7 @@ const AdminBooking = () => {
   const [bookings, setBookings] = useState([])
 
   const getData = async () => {
-    let access_token = localStorage.getItem("access_token")
-    let bookings = await getAllBookings(access_token)
-    console.log(bookings)
+    let bookings = await getAllBookings()
     setBookings(bookings)
   }
 
@@ -26,7 +24,7 @@ const AdminBooking = () => {
   return (
     <div className="admin">
       <div id="wrapper">
-        <SideBar />
+        <SideBar inActive={"booking"}/>
 
         <div id="content-wrapper" className="d-flex flex-column">
           <div id="content">
