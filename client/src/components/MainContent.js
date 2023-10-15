@@ -23,7 +23,8 @@ const MainContent = () => {
         <Route path="hotels" element={<HotelPage />}></Route>
         <Route path="login" element={<LoginPage />}></Route>
         <Route path="register" element={<RegisterPage />}></Route>
-        <Route path="admin" element={<AdminPage />}>
+        <Route path="admin">
+          <Route path="" element={<AdminPage />}></Route>
           <Route path="hotel" element={<AdminHotel />}></Route>
           <Route path="customer" element={<AdminCustomer />}></Route>
           <Route path="booking" element={<AdminBooking />}></Route>
