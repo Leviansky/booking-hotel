@@ -82,7 +82,7 @@ class BookingController {
             })
 
             //IF THERE'S NO ONE BOOKING
-            if (customerBooking.length === 0) return res.status(200).json({ message: 'you doesnt have room booked yet' })
+            if (customerBooking.length === 0) return res.status(200).json([])
 
             //SEND RESULT SUCCESS
             res.status(200).json(customerBooking)

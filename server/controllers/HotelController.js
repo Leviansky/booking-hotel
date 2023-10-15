@@ -24,6 +24,23 @@ class HotelController {
         }
     }
 
+    static async findOneHotel(req,res) {
+        try {
+            const id = +req.params.id
+            let hotel = await Hotel.findOne({
+                where: {id},
+                include: [Room]
+            })
+
+            hotel.Rooms.sort((a, b) => a.roomNumbers - b.roomNumbers);
+
+            res.status(200).json(hotel)
+        } catch (err) {
+            //SEND RESULT ERROR
+            res.status(500).json({ message: err.message })
+        }
+    }
+
     static async addHotel(req, res) {
         try {
             //GET DATA FROM REQUEST BODY

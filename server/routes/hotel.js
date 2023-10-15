@@ -13,5 +13,6 @@ hotelRoute.delete('/admin/:id', authAdmin, HotelController.deleteHotel)
 
 // //CUSTOMER
 hotelRoute.get('/', authUser, HotelController.listHotelAvailable)
+hotelRoute.get('/:id', authUser, HotelController.findOneHotel)
 
 module.exports = hotelRoute

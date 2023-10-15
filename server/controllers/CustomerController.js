@@ -132,6 +132,7 @@ class CustomerController {
 
             //MAKE FORMAT FOR SEND RESULT
             let result = {
+                id: founded.id,
                 username: founded.username,
                 email: founded.email,
                 name: founded.name,
