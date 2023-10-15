@@ -60,7 +60,7 @@ const HotelAdmin = () => {
                         data-toggle="modal"
                         data-target="#addHotelModal"
                       >
-                        Add Data
+                        <i class="fas fa-plus-circle">Add Data</i>
                       </button>
                     </div>
                   </div>
@@ -93,7 +93,7 @@ const HotelAdmin = () => {
                               <div className="row">
                                 <div className="col-4">
                                   <img
-                                    className="img-fluid rounded-circle"
+                                    className="img-thumbnail"
                                     src={image}
                                     alt=""
                                     srcset=""
@@ -127,7 +127,7 @@ const HotelAdmin = () => {
                                       data-target="#addRoomModal"
                                       onClick={() => eventHandler(id)}
                                     >
-                                      Add Room
+                                      <i class="fas fa-plus-circle">Room</i>
                                     </button>
                                     <button
                                       className="btn btn-warning mt-3 ml-3"
@@ -135,7 +135,7 @@ const HotelAdmin = () => {
                                       data-target="#updateRoomModal"
                                       onClick={() => eventHandler(id)}
                                     >
-                                      Update Room
+                                      <i className="fas fa-edit">Room</i>
                                     </button>
                                   </span>
                                 </div>
@@ -151,7 +151,7 @@ const HotelAdmin = () => {
                                 data-target="#updateHotelModal"
                                 onClick={() => eventHandler(id)}
                               >
-                                Update
+                                <i className="fas fa-edit"></i>
                               </button>
                               <button
                                 className="btn btn-danger"
@@ -159,7 +159,7 @@ const HotelAdmin = () => {
                                 data-target="#deleteModal"
                                 onClick={() => eventHandler(id)}
                               >
-                                Delete
+                                <i className="fa fa-trash"></i>
                               </button>
                             </td>
                           </tr>

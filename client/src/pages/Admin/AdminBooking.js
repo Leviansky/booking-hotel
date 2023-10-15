@@ -92,7 +92,7 @@ const AdminBooking = () => {
                                         data-target="#approvePaymentModal"
                                         onClick={() => eventHandler(id)}
                                       >
-                                        Approve
+                                        <i class="fas fa-check-double">Approve</i>
                                       </button>
                                     : Room.status === 'occupied'
                                       ? <button

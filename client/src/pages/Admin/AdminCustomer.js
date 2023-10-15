@@ -79,8 +79,8 @@ const Customers = () => {
                                 <td>{name}</td>
                                 <td>{username}</td>
                                 <td>{email}</td>
-                                <td>{address ? address : '-'}</td>
-                                <td>{phone ? phone : '-'}</td>
+                                <td>{address ? address : "-"}</td>
+                                <td>{phone ? phone : "-"}</td>
                                 <td>
                                   <button
                                     className="btn btn-warning"
@@ -88,7 +88,7 @@ const Customers = () => {
                                     data-target="#updateCustomerModal"
                                     onClick={() => eventHandler(customer)}
                                   >
-                                    Update
+                                    <i className="fas fa-edit"></i>
                                   </button>
                                   <button
                                     className="btn btn-danger"
@@ -96,7 +96,7 @@ const Customers = () => {
                                     data-target="#deleteModal"
                                     onClick={() => eventHandler(customer)}
                                   >
-                                    Delete
+                                    <i className="fa fa-trash"></i>
                                   </button>
                                 </td>
                               </tr>

@@ -39,10 +39,10 @@ const Navbar = () => {
     }
   };
 
-  const logoutHandler = () => {
-    localStorage.clear();
-    navigate("/");
-  };
+  // const logoutHandler = () => {
+  //   localStorage.clear();
+  //   navigate("/");
+  // };
 
   return (
     <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -95,7 +95,7 @@ const Navbar = () => {
               to="#"
               data-toggle="modal"
               data-target="#logoutModal"
-              onClick={() => logoutHandler()}
+              // onClick={() => logoutHandler()}
             >
               <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
               Logout
