@@ -8,7 +8,7 @@ class HotelController {
             let hotels = await Hotel.findAll({
                 include: [Room],
                 order: [
-                    ['id', 'asc']
+                    ['createdAt', 'desc']
                 ]
             })
 
