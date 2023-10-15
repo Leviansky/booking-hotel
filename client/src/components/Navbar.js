@@ -59,7 +59,7 @@ const Navbar = ({isLogin}) => {
                       <Link class="nav-link" to="/hotels">Hotels</Link>
                     </li>
                     <li class="nav-item">
-                      <Link class="nav-link" to="/">My Booking</Link>
+                      <Link class="nav-link" to="/bookings">My Booking</Link>
                     </li>
                   </>
                 : <></>

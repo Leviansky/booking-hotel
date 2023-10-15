@@ -3,14 +3,11 @@ import AboutPage from "./Contents/AboutPage";
 import LoginPage from "./Auth/LoginPage";
 import RegisterPage from "./Auth/RegisterPage";
 
-// Hotels
-import HotelPage from "./Hotels/HotelPage";
-
-// Rooms
-import RoomPage from "./Rooms/RoomPage";
-
 // Customer
 import CustomerPage from "./Customer/CustomerPage";
+import HotelPage from "./Customer/HotelPage";
+import RoomPage from "./Customer/RoomPage";
+import BookingPage from "./Customer/BookingPage";
 
 // Admin
 import AdminPage from "./Admin/AdminPage";
@@ -23,10 +20,12 @@ export {
   AboutPage,
   LoginPage,
   RegisterPage,
-  HotelPage,
-  RoomPage,
   AdminPage,
   AdminCustomer,
   AdminHotel,
-  AdminBooking
+  AdminBooking,
+  CustomerPage,
+  HotelPage,
+  RoomPage,
+  BookingPage,
 };

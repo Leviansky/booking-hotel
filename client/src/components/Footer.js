@@ -5,7 +5,7 @@ const Footer = () => {
 
   return (
     <footer className="footer">
-      <h2>Hotel Booking</h2>
+      <h6>Hotel Booking</h6>
       <p>
         &copy; <span>{year}</span> MiniBooking.com - All Rights Copyright
         Reserved To{" "}

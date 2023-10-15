@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Navbar, Footer } from "../../components";
 import Swal from "sweetalert2";
 import "./Room.css";
+import AddBookingModal from "../../components/Customers/AddBookingModal";
 
 const RoomPage = () => {
   const bookHandler = async () => {
@@ -74,9 +75,9 @@ const RoomPage = () => {
           <ul class="list-group list-group-horizontal p-3">
             <li class="list-group-item p-3">
               <button
-                type="button"
-                class="btn btn-success"
-                onClick={() => bookHandler()}
+                className="btn btn-success"
+                data-toggle="modal"
+                data-target="#addBookingModal"
               >
                 1
               </button>
@@ -211,6 +212,7 @@ const RoomPage = () => {
         </div>
       </div>
       <Footer />
+      <AddBookingModal />
     </div>
   );
 };

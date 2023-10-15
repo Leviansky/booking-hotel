@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* card */
+.card-img {
+  height: 20vh;
+}
+.card-text {
+  color: black;
+}
+.btn-card {
+  width: 100px;
+}

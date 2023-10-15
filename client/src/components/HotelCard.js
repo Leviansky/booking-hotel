@@ -10,7 +10,7 @@ const HotelCard = () => {
           <div className="col-md-4">
             <img
               src="https://mdbcdn.b-cdn.net/wp-content/uploads/2020/06/vertical.webp"
-              className="card card-img"
+              className="card card-img img-thumbnail"
               alt="..."
             />
           </div>
@@ -42,7 +42,7 @@ const HotelCard = () => {
           <div className="col-md-4">
             <img
               src="https://mdbcdn.b-cdn.net/wp-content/uploads/2020/06/vertical.webp"
-              className="card card-img"
+              className="card card-img img-thumbnail"
               alt="..."
             />
           </div>
