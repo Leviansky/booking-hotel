@@ -64,19 +64,6 @@ const getAllHotels = async () => {
   }
 }
 
-// const getAllRooms = async () => {
-//   try {
-//     let result = await axios({
-//       method: 'GET',
-//       url: URL + '/hotels/all',
-//       
-//     })
-//     return result.data
-//   } catch (error) {
-//     console.log(error.message)
-//   }
-// }
-
 const getAllUsers = async () => {
   try {
     let result = await axios({
@@ -189,6 +176,54 @@ const addRoom = async (id, data) => {
   }
 }
 
+const addHotel = async (data) => {
+  try {
+    let result = await axios({
+      method: 'POST',
+      url: URL + '/hotels/admin',
+      data: data,
+      headers: {
+        access_token: localStorage.getItem("access_token")
+      }
+    })
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
+const editHotel = async (id, data) => {
+  try {
+    let result = await axios({
+      method: 'PUT',
+      url: URL + '/hotels/admin/' + id,
+      data: data,
+      headers: {
+        access_token: localStorage.getItem("access_token")
+      }
+    })
+    getAllHotels()
+    return result.data
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
+const deleteHotel = async (id) => {
+  try {
+    let result = await axios({
+      method: 'DELETE',
+      url: URL + '/hotels/admin/' + id,
+      headers: {
+        access_token: localStorage.getItem("access_token")
+      }
+    })
+    getAllHotels()
+    return result.data
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
 export { 
   login, 
   register, 
@@ -199,5 +234,8 @@ export {
   deleteUser,
   approvePayment,
   checkout,
-  addRoom
+  addRoom,
+  addHotel,
+  editHotel,
+  deleteHotel
 };

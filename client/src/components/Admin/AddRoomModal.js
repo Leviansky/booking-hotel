@@ -5,10 +5,10 @@ const AddRoomModal = ({hotel}) => {
   const [price, setPrice] = useState(0)
 
   const addRoomHandler = async() => {
-    let result = await addRoom(hotel, {
-      price: price
-    })
-    console.log(result)
+    // let result = await addRoom(hotel.id, {
+    //   price: price
+    // })
+    console.log(hotel)
   }
 
   return (

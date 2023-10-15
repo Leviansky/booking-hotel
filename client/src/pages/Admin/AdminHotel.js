@@ -13,6 +13,7 @@ import {
   UpdateRoomModal,
 } from "../../components";
 import { getAllHotels } from "../../axios/authAxios";
+import DeleteHotelModal from "../../components/Admin/DeleteHotelModal";
 
 const HotelAdmin = () => {
   const [hotels, setHotels] = useState([])
@@ -24,8 +25,8 @@ const HotelAdmin = () => {
     setHotels(hotels)
   }
 
-  const eventHandler = (id) => {
-    setSelectedHotel(id)
+  const eventHandler = (hotel) => {
+    setSelectedHotel(hotel)
   }
 
   useEffect(() => {
@@ -125,7 +126,7 @@ const HotelAdmin = () => {
                                       className="btn btn-primary mt-3"
                                       data-toggle="modal"
                                       data-target="#addRoomModal"
-                                      onClick={() => eventHandler(id)}
+                                      onClick={() => eventHandler(hotel)}
                                     >
                                       <i class="fas fa-plus-circle">Room</i>
                                     </button>
@@ -133,7 +134,7 @@ const HotelAdmin = () => {
                                       className="btn btn-warning mt-3 ml-3"
                                       data-toggle="modal"
                                       data-target="#updateRoomModal"
-                                      onClick={() => eventHandler(id)}
+                                      onClick={() => eventHandler(hotel)}
                                     >
                                       <i className="fas fa-edit">Room</i>
                                     </button>
@@ -149,15 +150,15 @@ const HotelAdmin = () => {
                                 className="btn btn-warning"
                                 data-toggle="modal"
                                 data-target="#updateHotelModal"
-                                onClick={() => eventHandler(id)}
+                                onClick={() => eventHandler(hotel)}
                               >
                                 <i className="fas fa-edit"></i>
                               </button>
                               <button
                                 className="btn btn-danger"
                                 data-toggle="modal"
-                                data-target="#deleteModal"
-                                onClick={() => eventHandler(id)}
+                                data-target="#DeleteHotelModal"
+                                onClick={() => eventHandler(hotel)}
                               >
                                 <i className="fa fa-trash"></i>
                               </button>
@@ -179,9 +180,9 @@ const HotelAdmin = () => {
 
       <AddHotelModal />
       <AddRoomModal hotel={selectedHotel}/>
-      <UpdateHotelModal />
+      <UpdateHotelModal hotel={selectedHotel}/>
       <UpdateRoomModal />
-      <DeleteModal />
+      <DeleteHotelModal hotel={selectedHotel}/>
       <LogoutModal />
     </div>
   );

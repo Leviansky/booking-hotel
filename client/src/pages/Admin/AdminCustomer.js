@@ -72,35 +72,37 @@ const Customers = () => {
                       <tbody>
                         {
                           customer.map((customer, index) => {
-                            const {name, username, email, address, phone} = customer
-                            return (
-                              <tr>
-                                <td>{index + 1}</td>
-                                <td>{name}</td>
-                                <td>{username}</td>
-                                <td>{email}</td>
-                                <td>{address ? address : "-"}</td>
-                                <td>{phone ? phone : "-"}</td>
-                                <td>
-                                  <button
-                                    className="btn btn-warning"
-                                    data-toggle="modal"
-                                    data-target="#updateCustomerModal"
-                                    onClick={() => eventHandler(customer)}
-                                  >
-                                    <i className="fas fa-edit"></i>
-                                  </button>
-                                  <button
-                                    className="btn btn-danger"
-                                    data-toggle="modal"
-                                    data-target="#deleteModal"
-                                    onClick={() => eventHandler(customer)}
-                                  >
-                                    <i className="fa fa-trash"></i>
-                                  </button>
-                                </td>
-                              </tr>
-                            );
+                            const {name, username, email, address, phone, role} = customer
+                            return role === "user"
+                            ? (
+                                <tr>
+                                  <td>{index + 1}</td>
+                                  <td>{name}</td>
+                                  <td>{username}</td>
+                                  <td>{email}</td>
+                                  <td>{address ? address : "-"}</td>
+                                  <td>{phone ? phone : "-"}</td>
+                                  <td>
+                                    <button
+                                      className="btn btn-warning"
+                                      data-toggle="modal"
+                                      data-target="#updateCustomerModal"
+                                      onClick={() => eventHandler(customer)}
+                                    >
+                                      <i className="fas fa-edit"></i>
+                                    </button>
+                                    <button
+                                      className="btn btn-danger"
+                                      data-toggle="modal"
+                                      data-target="#deleteModal"
+                                      onClick={() => eventHandler(customer)}
+                                    >
+                                      <i className="fa fa-trash"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                              )
+                            : <></>
                           })
                         }
                       </tbody>
