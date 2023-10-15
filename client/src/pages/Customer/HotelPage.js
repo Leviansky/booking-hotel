@@ -6,7 +6,7 @@ const HotelPage = () => {
   return (
     <div>
       <Navbar isLogin={true} />
-      <SearchBarView />
+      {/* <SearchBarView /> */}
       <HotelCard />
       <Footer />
     </div>

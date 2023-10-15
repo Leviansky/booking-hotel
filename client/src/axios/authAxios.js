@@ -224,6 +224,58 @@ const deleteHotel = async (id) => {
   }
 }
 
+const getOneHotel = async (id) => {
+  try {
+    let result = await axios({
+      method: 'GET',
+      url: URL + '/hotels/' + id,
+      headers: {
+        access_token: localStorage.getItem("access_token") 
+      }
+    })
+    return result.data
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
+const Booking = async (data) => {
+  try {
+    let result = await axios({
+      method: 'POST',
+      url: URL + '/booking',
+      data: data,
+      headers: {
+        access_token: localStorage.getItem("access_token")
+      }
+    })
+    getOneHotel(data.HotelId)
+    Swal.fire({
+      icon: "success",
+      title: "Booking Success",
+      text: "You have been booked this room!",
+    })
+    return result.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const getAllBookingInOneCustomer = async () => {
+  try {
+    let result = await axios({
+      method: 'GET',
+      url: URL + '/booking/list',
+      headers: {
+        access_token: localStorage.getItem("access_token")
+      }
+    })
+    return result.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export { 
   login, 
   register, 
@@ -237,5 +289,8 @@ export {
   addRoom,
   addHotel,
   editHotel,
-  deleteHotel
+  deleteHotel,
+  getOneHotel,
+  Booking,
+  getAllBookingInOneCustomer
 };

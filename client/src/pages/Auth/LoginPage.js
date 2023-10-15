@@ -25,6 +25,7 @@ const LoginPage = () => {
         localStorage.setItem("address", result.address);
         localStorage.setItem("phone", result.phone);
         localStorage.setItem("role", result.role);
+        localStorage.setItem("id", result.id);
         if (result.role === "admin") {
           navigate("/admin");
         }

@@ -1,9 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Booking, getOneHotel } from "../../axios/authAxios";
 
-const AddBookingModal = () => {
-  const [selectesDate, setSelectedDate] = useState("");
+const AddBookingModal = ({room}) => {
+  const [roomNumbers, setRoomNumbers] = useState(0);
+  const [total_customer, setTotal_Customer] = useState(0);
+  const [price, setPrice] = useState(0);
+  const [RoomId, setRoomId] = useState(0);
+  const [HotelId, setHotelId] = useState(0);
+  const [dateCheckin, setDateCheckin] = useState(null);
+  const [dateCheckout, setDateCheckout] = useState(null);
+
+  const BookingHandler = async () => {
+    let result = await Booking({
+      dataCheckin: dateCheckin.toISOString(),
+      dataCheckout: dateCheckout.toISOString(),
+      total_customer: +total_customer,
+      HotelId: +HotelId,
+      RoomId: +RoomId,
+    })
+    console.log(result)
+    getOneHotel(HotelId)
+  }
+
+  useEffect(() => {
+    console.log(room)
+    setRoomNumbers(room.roomNumbers)
+    setPrice(room.price)
+    setRoomId(room.idRoom)
+    setHotelId(room.hotelId)
+  }, [room])
   return (
     <div
       className="modal fade"
@@ -40,7 +67,7 @@ const AddBookingModal = () => {
                     readonly
                     class="form-control-plaintext"
                     id="name"
-                    value=": (Room Number)"
+                    value={`: ${roomNumbers}`}
                   />
                 </div>
               </div>
@@ -54,8 +81,16 @@ const AddBookingModal = () => {
                     readonly
                     class="form-control-plaintext"
                     id="name"
-                    value=": Rp. 1000000"
+                    value={`: Rp.${price}`}
                   />
+                </div>
+              </div>
+              <div className="form-group row">
+                <label for="name" className="col-sm-3 col-form-label">
+                  Total Guest
+                </label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control-plaintext" id="name" onChange={(e) => setTotal_Customer(e.target.value)}/>
                 </div>
               </div>
               <div className="form-group row">
@@ -66,8 +101,8 @@ const AddBookingModal = () => {
                   :{" "}
                   <DatePicker
                     placeholderText="dd-mm-yyyy"
-                    selected={selectesDate}
-                    onChange={(date) => setSelectedDate(date)}
+                    selected={dateCheckin}
+                    onChange={(date) => setDateCheckin(date)}
                     dateFormat="dd-MM-yyyy"
                     showYearDropdown
                   />
@@ -81,8 +116,8 @@ const AddBookingModal = () => {
                   :{" "}
                   <DatePicker
                     placeholderText="dd-mm-yyyy"
-                    selected={selectesDate}
-                    onChange={(date) => setSelectedDate(date)}
+                    selected={dateCheckout}
+                    onChange={(date) => setDateCheckout(date)}
                     dateFormat="dd-MM-yyyy"
                     showYearDropdown
                   />
@@ -98,7 +133,12 @@ const AddBookingModal = () => {
             >
               Cancel
             </button>
-            <button type="button" className="btn btn-primary">
+            <button 
+              type="button" 
+              className="btn btn-primary"
+              data-dismiss="modal"
+              onClick={() => BookingHandler()}
+            >
               Book
             </button>
           </div>
