@@ -1,4 +1,4 @@
-const { Hotel, Room } = require('../models')
+const { Hotel, Room, Booking } = require('../models')
 
 
 class HotelController {
@@ -6,8 +6,15 @@ class HotelController {
         try {
             //GET ALL HOTEL INCLUDE ROOM
             let hotels = await Hotel.findAll({
-                include: [Room]
+                include: [Room],
+                order: [
+                    ['id', 'asc']
+                ]
             })
+
+            hotels.forEach((hotel) => {
+                hotel.Rooms.sort((a, b) => a.roomNumbers - b.roomNumbers);
+            });
 
             //SEND RESULT SUCCESS
             res.status(200).json(hotels)
@@ -80,6 +87,14 @@ class HotelController {
 
             //DELETE ONE HOTEL BY ID
             const result = await Hotel.destroy({ where: { id } })
+
+            await Booking.destroy({
+                where: {HotelId: id}
+            })
+
+            await Room.destroy({
+                where: {HotelId: id}
+            })
 
             //SEND RESULT
             result === 1 ?

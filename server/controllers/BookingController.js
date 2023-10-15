@@ -112,6 +112,7 @@ class BookingController {
 
             //CHANGE STATUS ROOM TO AVAILABLE
             room.status = 'available';
+            room.BookingId = null;
 
             //UPDATE CHANGED STATUS ROOM
             let result = await Room.update(room, {
@@ -152,6 +153,7 @@ class BookingController {
 
             //CHANGE STATUS ROOM
             room.dataValues.status = 'occupied';
+            room.dataValues.BookingId = id;
 
             //DESTRUCTURING DATA IN ROOM
             const { roomNumbers, price } = room;
