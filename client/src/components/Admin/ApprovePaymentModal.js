@@ -1,11 +1,16 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { getAllBookings, approvePayment } from '../../axios/authAxios'
 
 const ApprovePaymentModal = ({booking}) => {
   const approveHandler = async() => {
-    let result = await approvePayment(booking[0].id)
+    let result = await approvePayment(booking.id)
+    console.log(result)
     await getAllBookings()
   }
+
+  useEffect(() => {
+
+  }, [booking])
   return (
     <div
       className="modal fade"
