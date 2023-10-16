@@ -110,6 +110,7 @@ const HotelAdmin = () => {
                                             <li class="list-group-item p-0 ml-1">
                                               <button
                                                 className="btn btn-success"
+                                                disabled
                                                 // data-toggle="modal"
                                                 // data-target="#exampleModalToggle"
                                               >
@@ -120,6 +121,7 @@ const HotelAdmin = () => {
                                             <li class="list-group-item p-0 ml-1">
                                               <button
                                                 className="btn btn-secondary"
+                                                disabled
                                                 // data-toggle="modal"
                                                 // data-target="#exampleModalToggle"
                                               >
