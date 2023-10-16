@@ -19,13 +19,14 @@ const AdminBooking = () => {
     setBookings(bookings)
   }
 
-  const eventHandler = (bookings) => {
-    setSelectedBooking(bookings)
+  const eventHandler = (booking) => {
+    console.log(booking)
+    setSelectedBooking(booking)
   }
 
   useEffect(() => {
     getData()
-  }, [bookings])
+  }, [bookings, selectedBooking])
   return (
     <div className="admin">
       <div id="wrapper">
@@ -90,7 +91,7 @@ const AdminBooking = () => {
                                         className="btn btn-success"
                                         data-toggle="modal"
                                         data-target="#approvePaymentModal"
-                                        onClick={() => eventHandler(id)}
+                                        onClick={() => eventHandler(booking)}
                                       >
                                         <i class="fas fa-check-double">Approve</i>
                                       </button>
@@ -99,7 +100,7 @@ const AdminBooking = () => {
                                         className="btn btn-danger"
                                         data-toggle="modal"
                                         data-target="#checkoutModal"
-                                        onClick={() => eventHandler(id)}
+                                        onClick={() => eventHandler(booking)}
                                         >
                                           Check Out
                                         </button>
@@ -122,8 +123,8 @@ const AdminBooking = () => {
         </div>
       </div>
 
-      <ApprovePaymentModal booking={bookings}/>
-      <CheckoutModal booking={bookings}/>
+      <ApprovePaymentModal booking={selectedBooking}/>
+      <CheckoutModal booking={selectedBooking}/>
       <LogoutModal />
     </div>
   );

@@ -21,18 +21,18 @@ const AdminPage = () => {
     let customers = await getAllUsers()
     let bookings = await getAllBookings()
     let total = 0
-    await hotels.forEach(hotel => {
     setHotels(hotels)
     setCustomers(customers)
     setTotalRoom(total)
     setBookings(bookings)
+    await hotels.forEach(hotel => {
       total+=hotel.total_room
     })
   }
 
   useEffect(() => {
     getAllDatas()
-  }, [])
+  }, [hotels, totalRoom, customers, bookings])
 
   return (
     <div className="admin">

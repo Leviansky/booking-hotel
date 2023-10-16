@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { getAllBookings, checkout } from '../../axios/authAxios'
 
 const CheckoutModal = ({booking}) => {
   const checkoutHandler = async() => {
-    let result = await checkout(booking[0].id)
+    let result = await checkout(booking.id)
     console.log(result)
     await getAllBookings()
   }
+  useEffect(() => {
+
+  }, [booking])
   return (
     <div
       className="modal fade"
