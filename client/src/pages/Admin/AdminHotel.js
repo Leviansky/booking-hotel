@@ -109,7 +109,7 @@ const HotelAdmin = () => {
                                           return room.status === "available" ? (
                                             <li class="list-group-item p-0 ml-1">
                                               <button
-                                                className="btn btn-succes"
+                                                className="btn btn-success"
                                                 // data-toggle="modal"
                                                 // data-target="#exampleModalToggle"
                                               >
