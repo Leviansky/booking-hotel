@@ -4,7 +4,7 @@ import "./Admin.css";
 import {
   AdminFooter,
   AdminNavbar,
-  DeleteModal,
+  DeleteCustomerModal,
   LogoutModal,
   SideBar,
   UpdateCustomerModal,
@@ -94,7 +94,7 @@ const Customers = () => {
                                     <button
                                       className="btn btn-danger"
                                       data-toggle="modal"
-                                      data-target="#deleteModal"
+                                      data-target="#deleteCustomerModal"
                                       onClick={() => eventHandler(customer)}
                                     >
                                       <i className="fa fa-trash"></i>
@@ -118,7 +118,7 @@ const Customers = () => {
       </div>
 
       <UpdateCustomerModal customer={selectedCustomer}/>
-      <DeleteModal customer={selectedCustomer}/>
+      <DeleteCustomerModal customer={selectedCustomer}/>
       <LogoutModal />
     </div>
   );

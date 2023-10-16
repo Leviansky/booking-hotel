@@ -6,14 +6,14 @@ import {
   AddRoomModal,
   AdminFooter,
   AdminNavbar,
-  DeleteModal,
+  DeleteHotelModal,
+  DetailRoomModal,
   LogoutModal,
   SideBar,
   UpdateHotelModal,
   UpdateRoomModal,
 } from "../../components";
 import { getAllHotels } from "../../axios/authAxios";
-import DeleteHotelModal from "../../components/Admin/DeleteHotelModal";
 
 const HotelAdmin = () => {
   const [hotels, setHotels] = useState([])
@@ -106,17 +106,27 @@ const HotelAdmin = () => {
                                     <ul class="list-group list-group-horizontal p-0 ">
                                       {
                                         Rooms.map(room => {
-                                          return room.status === 'available'
-                                          ? <li class="list-group-item p-0 ml-1">
-                                              <button type="button" class="btn btn-success" disabled>
+                                          return room.status === "available" ? (
+                                            <li class="list-group-item p-0 ml-1">
+                                              <button
+                                                className="btn btn-succes"
+                                                // data-toggle="modal"
+                                                // data-target="#exampleModalToggle"
+                                              >
                                                 {room.roomNumbers}
                                               </button>
                                             </li>
-                                          : <li class="list-group-item p-0 ml-1">
-                                              <button type="button" class="btn btn-secondary" disabled>
+                                          ) : (
+                                            <li class="list-group-item p-0 ml-1">
+                                              <button
+                                                className="btn btn-secondary"
+                                                // data-toggle="modal"
+                                                // data-target="#exampleModalToggle"
+                                              >
                                                 {room.roomNumbers}
                                               </button>
                                             </li>
+                                          );
                                         })
                                       }
                                     </ul>
@@ -130,14 +140,14 @@ const HotelAdmin = () => {
                                     >
                                       <i class="fas fa-plus-circle">Room</i>
                                     </button>
-                                    <button
+                                    {/* <button
                                       className="btn btn-warning mt-3 ml-3"
                                       data-toggle="modal"
                                       data-target="#updateRoomModal"
                                       onClick={() => eventHandler(hotel)}
                                     >
                                       <i className="fas fa-edit">Room</i>
-                                    </button>
+                                    </button> */}
                                   </span>
                                 </div>
                               </div>
@@ -182,6 +192,7 @@ const HotelAdmin = () => {
       <AddRoomModal hotel={selectedHotel}/>
       <UpdateHotelModal hotel={selectedHotel}/>
       <UpdateRoomModal />
+      <DetailRoomModal />
       <DeleteHotelModal hotel={selectedHotel}/>
       <LogoutModal />
     </div>

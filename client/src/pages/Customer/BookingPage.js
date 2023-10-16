@@ -48,7 +48,7 @@ const BookingPage = () => {
                           {/* <i class="fas fa-door-open me-2"></i>{booking.Room.roomNumbers} */}
                         </span>
                         <span>
-                          <i class="fas fa-users ml-4 me-2"></i>{booking.total_customer} persons
+                          <i class="fas fa-users me-2"></i>{booking.total_customer} persons
                         </span>
                         <span>
                           <i class="fas fa-sign-in-alt ml-4 me-2"></i>

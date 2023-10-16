@@ -9,16 +9,16 @@ const DeleteModal = ({customer}) => {
   return (
     <div
       className="modal fade"
-      id="deleteModal"
+      id="deleteCustomerModal"
       tabindex="-1"
       role="dialog"
-      aria-labelledby="deleteModalLabel"
+      aria-labelledby="deleteCustomerModalLabel"
       aria-hidden="true"
     >
       <div className="modal-dialog" role="document">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title" id="deleteModalLabel">
+            <h5 className="modal-title" id="deleteCustomerModalLabel">
               Delete
             </h5>
             <button
