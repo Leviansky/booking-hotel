@@ -18,11 +18,10 @@ module.exports = (sequelize, DataTypes) => {
     roomNumbers: DataTypes.INTEGER,
     price: DataTypes.INTEGER,
     status: DataTypes.STRING,
-    HotelId: DataTypes.INTEGER,
-    BookingId: DataTypes.INTEGER
+    HotelId: DataTypes.INTEGER
   }, {
     hooks: {
-      beforeCreate: function(room,options) {
+      beforeCreate: function(room, options) {
         room.status = 'available'
       }
     },
